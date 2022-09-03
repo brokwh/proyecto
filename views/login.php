@@ -3,6 +3,7 @@
 <head>
 <title>Ingreso</title>
 <?php include("includes/header.php");?>
+<?php require_once("../proyecto-main/controllers/agregarUsuario.php"); ?>
 <style>
 </style>
 </head>
@@ -14,13 +15,13 @@
 </style>
 </head>
 <?php include("includes/navLogin.php");?>
-<?php include("../proyecto-main/controllers/agregarUsuario.php"); ?>
+
         <br>
         <div class="container justify-content-center h-100 text-center">
         <h2>Login</h2>
         </div>
         <div class="container justify-content-center h-100">
-            <form action =""  method="post" class = "form-signin text-center needs-validation" novalidate>
+            <form action =""  method="post" class = "form-signin text-center">
                 
                 <div class="form-group">
                         <label>Cargo</label>
@@ -45,13 +46,17 @@
                     <div class="form-outline mb-4  d-none" id="pwdDiv">
                         <label>Contraseña:</label>
                         <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Ingrese contraseña">              
-                    </div>                    
-                    <br> 
+                    </div>   
+                                 
+                    <div class="text-start">
+                    <a href="http://localhost/proyecto-main/views/recuperarPwd.php"><small>Recuperar contraseña</small></a>
+                    </div>
                     <br>                 
                     <div class="checkbox">                       
-                        <button type="submit" class="btn  btn-dark btn-primary btn-block mb-4 d-flex position-absolute top-20 start-50 translate-middle">Ingresar</button>
-            </form>
+                        <button name="ingresar" id="ingresar" type="submit" class="btn  btn-dark btn-primary btn-block mb-4 d-flex position-absolute top-20 start-50 translate-middle">Ingresar</button>
+           
                     </div>
+                </form>    
                     <div class="form-check">
                     <input class="form-check-input" type="checkbox" onclick="Toggle()"></input>
                     <label class="form-check-label" for="flexCheckDefault">
@@ -61,54 +66,57 @@
 
             <!--modal registro-->
             
-            <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h4 class="modal-title w-100 font-weight-bold">Registro</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
+                <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold">Registro</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
                 </div>
-                
-               <form action="" method="post">
-                    <div class="modal-body mx-3">
-                    <div class="form-group">
-                            
-                            <select class="form-control" id="cargoRegistro" name="cargoRegistro" onchange="habilitarPWD(this) || habilitarPIN(this)">
-                            <option>Elija su cargo</option>
-                            <option>Mozo</option>
-                            <option>Delivery</option>
-                            <option>Caja</option>
-                            <option>Cocina</option>
-                            <option>Gerente</option>
-                            <option>Administrador</option>                 
-                            </select>
-                            <label>Cargo</label>
-                        
-                        
-                        </div>
-                        <br>
+                    
+                        <form action="" method="post">
+                                <div class="modal-body mx-3">
+                                <div class="form-group">
+                                        
+                                        <select class="form-control" id="cargoRegistro" name="cargoRegistro" onchange="habilitarPWD(this) || habilitarPIN(this)">
+                                        <option>Elija su cargo</option>
+                                        <option>Mozo</option>
+                                        <option>Delivery</option>
+                                        <option>Caja</option>
+                                        <option>Cocina</option>
+                                        <option>Gerente</option>
+                                        <option>Administrador</option>                 
+                                        </select>
+                                        <label>Cargo</label>
+                                    
+                                    
+                                    </div>
+                                    <br>
 
-                        <div class="form-outline mb-4  d-none" id="pinDivModal">
-                            <label>PIN</label>
-                            <input type="password" class="form-control"  id="pinRegistro" name="pinRegistro" placeholder="Ingrese PIN" >
-                        </div>
+                                    <div class="form-outline mb-4  d-none" id="pinDivModal">
+                                        <label>PIN</label>
+                                        <input type="password" class="form-control"  id="pinRegistro" name="pinRegistro" placeholder="Ingrese PIN" >
+                                    </div>
 
-                        <div class="form-outline mb-4  d-none" id="pwdDivModal">
-                            <label>Contraseña:</label>
-                            <input type="password" class="form-control" id="pwdRegistro" name="pwdRegistro" placeholder="Ingrese contraseña">              
-                        </div>        
+                                    <div class="form-outline mb-4  d-none" id="pwdDivModal">
+                                        <label>Contraseña:</label>
+                                        <input type="password" class="form-control" id="pwdRegistro" name="pwdRegistro" placeholder="Ingrese contraseña">              
+                                    </div>        
 
+                                </div>
+                                <div class="modal-footer d-flex justify-content-center">
+                                    <button type='submit' id="registroB" name="registroB" class="btn btn-deep-orange">Registrarse</button>
+                                </div>
+                        </form>
                     </div>
-                    <div class="modal-footer d-flex justify-content-center">
-                        <button type='submit' id="registroB" name="registroB" class="btn btn-deep-orange">Registrarse</button>
-                    </div>
-                </form>
                 </div>
-            </div>
         </div>
 
+           
+
+          
 
         <script>
             function habilitarPIN(answer){
@@ -133,24 +141,23 @@
                 }
             };
 
-                function Toggle() {
-            var temp = document.getElementById("pwd");
-            if (temp.type === "password") {
-                temp.type = "text";
-            }
-            else {
-                temp.type = "password";
-            }
-        } ; 
-        function Toggle() {
-            var temp = document.getElementById("pin");
-            if (temp.type === "password") {
-                temp.type = "text";
-            }
-            else {
-                temp.type = "password";
-            }
-        } ;                         
+            function Toggle() {
+                var temp = document.getElementById("pin");
+                var tempp = document.getElementById("pwd");
+                    if (temp.type === "password") {
+                        temp.type = "text";
+                    }
+                    else {
+                        temp.type = "password";
+                    }
+                    if (tempp.type === "password") {
+                            tempp.type = "text";
+                        }
+                        else {
+                            tempp.type = "password";
+                    }
+            } ; 
+                                   
                 
             
         </script>

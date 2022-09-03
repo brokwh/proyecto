@@ -1,7 +1,6 @@
 <?php 
 require_once("../proyecto-main/models/Usuario.php");
 $productos = new Usuario();
-session_start();
 
 if(isset($_POST['registroB'])){
     echo "asd";

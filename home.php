@@ -1,4 +1,10 @@
-<? session_start(); ?>
+<?php 
+include_once ('models/UsuarioSession.php');
+$sesion = new UsuarioSession;
+if ($_SESSION['user'] == ''){   
+    $sesion->redirect();
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,13 +15,13 @@
     <?php// require_once("controllers/ListadoProductoController.php"); ?>
     <div id="menu">
         <ul>
-            <li>Home</li>
+            <li>Home</li> 
             <li class="cerrar-sesion"><a href="includes/logout.php">Cerrar sesión</a></li>
         </ul>
     </div>
 
     <section>
-        <h1>Bienvenido</h1>
+        <h1>Bienvenido <?php   echo  $_SESSION['user']; ?></h1> 
     </section>
 <!-- final body -->
 <?php include("includes/footer.php"); ?>

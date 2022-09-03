@@ -6,7 +6,7 @@ class Usuario{
     private $username;
     
     public function __construct(){
-        require_once("Models/db.php");
+        include_once("db.php");
         $this->conn=db::conexion();
        
     }
@@ -43,6 +43,13 @@ class Usuario{
 
         $consulta = "INSERT INTO usuarios(tipo,pwd,pin) VALUES('$tipo','$pwd','$pin');";
         echo $consulta;
+        $query = mysqli_query($this->conn, $consulta);
+        
+    }
+
+    public function recuperarUsuario($email){
+
+        $consulta = "SELECT * FROM `usuarios` WHERE email = '$email'";
         $query = mysqli_query($this->conn, $consulta);
         
     }

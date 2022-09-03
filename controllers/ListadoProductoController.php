@@ -3,7 +3,7 @@
 require_once("../models/Producto.php");
 $productos = new Producto();
 $matrizProductos = $productos->getProductos();
-session_start();
+
 
     if(isset($_POST['eliminarB'])){//eliminar producto
 

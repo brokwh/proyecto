@@ -1,7 +1,7 @@
 <?php 
 require_once("../models/Producto.php");
 $productos = new Producto();
-session_start();
+
 
 if(isset($_POST['agregarProductoB'])){//eliminar producto
 

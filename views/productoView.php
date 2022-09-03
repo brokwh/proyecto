@@ -1,4 +1,10 @@
-<?php session_start(); ?>
+<?php 
+include_once ('../models/UsuarioSession.php');
+$sesion = new UsuarioSession;
+if ($_SESSION['user'] == ''){   
+    header("Location:../index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
