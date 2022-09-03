@@ -1,15 +1,14 @@
 <?php
-include_once('models/db.php');
+//include_once('models/db.php');
 include_once ('models/Usuario.php');
 include_once ('models/UsuarioSession.php');
 
-$usuarioSession = new UsuarioSession();
-$usuario = new Usuario();
+
 
 
 if(isset($_SESSION['usuario'])){
+echo "hay session";
 
-    $usuario->setUser($usuarioSession->getCurrentUser());
 
 }else if(isset($_POST['cargo']) && isset($_POST['pwd'])){
     
@@ -18,12 +17,14 @@ if(isset($_SESSION['usuario'])){
     $pinForm = $_POST['pin'];
     $usuario = new Usuario();
     if($usuario->validarUsuario($cargoForm, $passForm, $pinForm)){
-        
-        $usuarioSession->setCurrentUser($cargoForm);
-        $usuario->setUser($cargoForm);
+        session_start();
+
+        $sesion = new UsuarioSession;      
+        $sesion->setCurrentUser($cargoForm);
+        $usuario->setUser($sesion->getCurrentUser());
        
        if($usuario->getNombre() == "Administrador"){
-        include_once("views/adminView.php");
+        header("Location:http://localhost/proyecto-main/home.php");
        }
        if($usuario->getNombre() == "Gerente"){
         include_once("views/gerenteView.php");
@@ -42,13 +43,11 @@ if(isset($_SESSION['usuario'])){
        }
         
     }else{
-        //echo "No existe el usuario";
         $errorLogin = "Nombre de usuario y/o password incorrecto";
         include_once ('views/login.php');
     }
 }else{
-    //echo "login";
-    include_once 'views/login.php';
+    include_once ('views/login.php');
 }
 
 

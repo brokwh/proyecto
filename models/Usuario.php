@@ -12,9 +12,9 @@ class Usuario{
     }
 
     public function validarUsuario($user, $pass, $pin){
-        //$md5pass = md5($pass);
         $sql = ('SELECT * FROM usuarios WHERE tipo = "'. $user .'"  AND pwd ="'. $pass .'" OR pin ="'. $pin .'"');
         $query= mysqli_query($this->conn, $sql);
+        
         if(mysqli_fetch_array($query)){
             return true;
         }else{
@@ -38,6 +38,15 @@ class Usuario{
     public function getNombre(){
         return $this->tipo;
     }
+
+    public function agregarUsuario($tipo, $pwd, $pin){
+
+        $consulta = "INSERT INTO usuarios(tipo,pwd,pin) VALUES('$tipo','$pwd','$pin');";
+        echo $consulta;
+        $query = mysqli_query($this->conn, $consulta);
+        
+    }
+
 }
 
 ?> 

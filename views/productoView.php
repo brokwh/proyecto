@@ -1,15 +1,15 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<title>Santa Comandas</title>
+<title>Productos</title>
 <?php include("../includes/header.php");?>
     <?php include("../includes/nav.php");?>
-
 
     <?php 
     require_once("../controllers/ListadoProductoController.php");
     echo "
-    <form action='' method='post'>
+    <form action='http://localhost/proyecto-main/views/productoView.php' method='post'>
     <TABLE class='table'>
         <tr>
             <th>ID</th>
@@ -17,9 +17,11 @@
             <th>Tipo</th>
             <th>Precio</th>
             <th></th>
+            <th class='text-end'> <a class='btn btn-dark btn-info' role='button' href='../views/agregarProducto.php'>Agregar</a> </th>
             
         
         </tr>";
+        if($matrizProductos == true){
         foreach($matrizProductos as $productos){
         
             echo "<tr>";
@@ -27,11 +29,71 @@
             echo "<td>". $productos['nombre']. "</td>";
             echo "<td>". $productos['tipo']. "</td>";
             echo "<td>". $productos['precio']. "</td>";
+
+            echo "<td> <button type='button' data-toggle='modal' data-target='#productoEdit". $productos['id']."' class='btn btn-secondary' name='editarB' id='editarB' value=". $productos['id'].  "> Editar </button> </td>";
             echo "<td> <button type='submit' class='btn btn-danger' name='eliminarB' id='eliminarB' value=". $productos['id']. "> Eliminar </button> </td>";
+            //modal//
+                echo "<div class='modal fade' id='productoEdit". $productos['id']."' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>
+                <div class='modal-dialog modal-dialog-centered' role='document'>
+                <div class='modal-content'>
+                    <div class='modal-header'>
+                    <h5 class='modal-title' id='exampleModalLongTitle'>Editar producto</h5>
+                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                        <span aria-hidden='true'>&times;</span>
+                    </button>
+                    </div>
+                    <div class='modal-body'>
+                    
+                    <form class='form-inline' action='' method='post'>
+                    <div class='form-group'>
+                    <label for='text'>Nombre:</label>
+                    <input type='text' class='form-control' id='nombreEditProducto' name='nombreEditProducto'>
+                    </div>
+                    <div class='form-group'>
+                    <label>Tipo</label>
+                    <select class='form-control' id='tipoEditProducto' name='tipoEditProducto'>
+                    <option>Bebida</option>
+                    <option>Plato</option>
+                    <option>Postre</option>                
+                    </select>            
+                </div>
+                <div class='form-group'>
+                    <label for='text'>Precio:</label>
+                    <input type='text' class='form-control' id='precioEditProducto' name='precioEditProducto'>
+                    </div>
+                    <div class='modal-footer'>
+                    <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
+                    <button href='' type='submit' class='btn btn-primary' name = 'editBConfirmar' value=". $productos['id'].">Guardar cambios</button>
+                    </div>
+                    </form>
+                </div>
+                </div>
+            
+            </div>";
+          //
             echo "</tr>";
             echo "</form>";
+        }  
+        }else {
+            echo "<td></td>";
+            echo "<td></td>";
+            echo "<td></td>";
+            echo "<td></td>";
+            echo "<td></td>";
+            echo "<td></td>";
+            
+           
+            echo "</tr>";
         }
-    echo "</TABLE>
-    </form>"
+    echo "</TABLE>";
+    
+
+  // include('ProductoEditModal.php');
+
+
+       // echo $editProductoModal;
+       // echo $_POST['editarB'];
+       // echo $_POST['eliminarB'];
     ?>
+
 <?php include("../includes/footer.php"); ?>

@@ -2,10 +2,6 @@
 
 class UsuarioSession{
 
-    public function __construct(){
-        session_start();
-    }
-
     public function setCurrentUser($user){
         $_SESSION['user'] = $user;
     }
@@ -14,7 +10,7 @@ class UsuarioSession{
         return $_SESSION['user'];
     }
 
-    public function closeSession(){
+    public static function closeSession(){
         session_unset();
         session_destroy();
     }

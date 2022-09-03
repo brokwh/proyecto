@@ -1,35 +1,46 @@
 <?php
 class Producto{ 
     private $conn; 
-    private $alumnos;
+    private $productos;
 
     public function __construct(){
         require_once("../models/db.php");
         $this->conn=db::conexion();
-        $this->alumno = array();
+        $this->productos = array();
     }
 
     public function getProductos(){
-        $sql = "SELECT * FROM producto";
-        $query = mysqli_query($this->conn, $sql);
+        $consulta = "SELECT * FROM producto";
+        $query = mysqli_query($this->conn, $consulta);
         
         
         while($filas = mysqli_fetch_array($query)){
-            $this->alumnos[] = $filas;
+            $this->productos[] = $filas;
         }
-        return $this->alumnos;
+        return $this->productos;
     }
 
-    public function eliminarAlumno($alumno){
+    public function eliminarProducto($producto){
 
-        $query1 = "DELETE FROM alumnos WHERE id IN($alumno) ";
-        $query1_run = mysqli_query($this->conn, $query1);
-       
-        if($query1_run)
-        {
-            header("Location: index.php");
-        }
-     
+        $consulta = "DELETE FROM producto WHERE id IN($producto) ";
+        $query = mysqli_query($this->conn, $consulta);
     }
+
+    public function editarProducto($nombre, $tipo, $precio, $producto){
+
+        $consulta = "UPDATE producto
+        SET nombre = '$nombre', tipo = '$tipo', precio = $precio
+        WHERE id = $producto;";
+        $query = mysqli_query($this->conn, $consulta);
+    }
+
+    public function agregarProducto($nombre, $tipo, $precio){
+
+        $consulta = "INSERT INTO producto(nombre,tipo,precio) VALUES('$nombre','$tipo','$precio');";
+        echo $consulta;
+        $query = mysqli_query($this->conn, $consulta);
+        
+    }
+
 }
 ?>

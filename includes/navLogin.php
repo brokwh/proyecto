@@ -9,10 +9,11 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href=""></a>
         </li>
-        <li class="nav-item">
+
+       <!-- <li class="nav-item">
           <a class="nav-link"  href="http://localhost/proyecto-main/views/productoView.php">Productos</a>
         </li>
-        <!--<li class="nav-item">
+        <li class="nav-item">
 
           <a class="nav-link" href="#">Borrar</a>
         </li>
@@ -32,24 +33,8 @@
     </div>
     <div class="navbar-nav ms-auto">
         <form action="">
-                <a href="http://localhost/proyecto-main/logout.php" name="logout" class="nav-item nav-link">Salir</a>
+                <a href="" class="nav-item nav-link" data-toggle="modal" data-target="#modalRegisterForm">Registrarse</a>
           </form>
     </div>
   </div>
 </nav>
-<script>
-// Get the container element
-var btnContainer = document.getElementById("navbarNav");
-
-// Get all buttons with class="btn" inside the container
-var btns = btnContainer.getElementsByClassName("nav-link");
-
-// Loop through the buttons and add the active class to the current/clicked button
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function() {
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
-}
-</script>
