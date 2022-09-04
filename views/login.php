@@ -9,6 +9,34 @@
 </head>
 <body>
 <style>
+     body {
+  background: url('https://www.buengusto.co/wp-content/uploads/2022/02/pescaderias-marisquerias-bogota.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: #000;
+  font-family: 'Poppins', sans-serif;
+ font-weight: 400;
+ -webkit-font-smoothing: antialiased;
+ text-rendering: optimizeLegibility;
+-moz-osx-font-smoothing: grayscale;
+}
+
+.contenedor{
+    opacity:90%;
+margin-left: 20%;
+margin-right:20% ;
+}
+footer{
+    width: 100%;
+    height: 81px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    }
+
     .d-none{
         display: none;
     }
@@ -17,11 +45,20 @@
 <?php include("includes/navLogin.php");?>
 
         <br>
+<<<<<<< Updated upstream
         <div class="container justify-content-center h-100 text-center">
         <h2>Login</h2>
         </div>
         <div class="container justify-content-center h-100">
             <form action =""  method="post" class = "form-signin text-center">
+=======
+        <div class=contenedor>
+ 
+            <div class="container-fluid p-3 my-3 bg-dark text-white">
+         <h3>LOGIN</h3>
+         
+            <form action =""  method="post" class = "form-signin needs-validation" novalidate>
+>>>>>>> Stashed changes
                 
                 <div class="form-group">
                         <label>Cargo</label>
@@ -46,6 +83,7 @@
                     <div class="form-outline mb-4  d-none" id="pwdDiv">
                         <label>Contraseña:</label>
                         <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Ingrese contraseña">              
+<<<<<<< Updated upstream
                     </div>   
                                  
                     <div class="text-start">
@@ -57,15 +95,29 @@
            
                     </div>
                 </form>    
+=======
+                    </div>                    
+                    <br> 
+>>>>>>> Stashed changes
                     <div class="form-check">
                     <input class="form-check-input" type="checkbox" onclick="Toggle()"></input>
                     <label class="form-check-label" for="flexCheckDefault">
                         Mostrar contraseña
                     </label>
                     </div>
+                    <br>                 
+                    <div class="checkbox">                       
+                        <button type="submit" class="btn   btn-primary btn-block mb-4 d-flex position-absolute top-20 start-50 translate-middle">Ingresar</button>
+                        <br>           
+                    </form>
+            </div>
+        </div>
+     </div>
+                    
 
             <!--modal registro-->
             
+<<<<<<< Updated upstream
                 <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -94,6 +146,36 @@
                                     
                                     </div>
                                     <br>
+=======
+            <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title w-100 font-weight-bold">Registro</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                
+               <form action="" method="post">
+                    <div class="modal-body mx-3">
+                    <div class="form-group">
+                            <label>Cargo</label>
+                            <select class="form-control" id="cargoRegistro" name="cargoRegistro" onchange="habilitarPWD(this) || habilitarPIN(this)">
+                            <option>Elija su cargo</option>
+                            <option>Mozo</option>
+                            <option>Delivery</option>
+                            <option>Caja</option>
+                            <option>Cocina</option>
+                            <option>Gerente</option>
+                            <option>Administrador</option>                 
+                            </select>
+                            
+                        
+                        
+                        </div>
+                        <br>
+>>>>>>> Stashed changes
 
                                     <div class="form-outline mb-4  d-none" id="pinDivModal">
                                         <label>PIN</label>
