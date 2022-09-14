@@ -30,20 +30,19 @@ $usuario = new Usuario;
                 header("Location:http://localhost/proyecto-main/home.php");
             }
             if($usuario->getNombre() == "Gerente"){
-                //header("Location:http://localhost/proyecto-main/home.php");
+                header("Location:http://localhost/proyecto-main/home.php");
             }
             if($usuario->getNombre() == "Mozo"){
-                echo "posi gay";
-                //header("Location:http://localhost/proyecto-main/home.php");
+                header("Location:http://localhost/proyecto-main/home.php");
             }
             if($usuario->getNombre() == "Delivery"){
-                //header("Location:http://localhost/proyecto-main/home.php");
+                header("Location:http://localhost/proyecto-main/home.php");
             }
             if($usuario->getNombre() == "Cocina"){
-                //header("Location:http://localhost/proyecto-main/home.php");
+                header("Location:http://localhost/proyecto-main/home.php");
             }
             if($usuario->getNombre() == "Caja"){
-                //header("Location:http://localhost/proyecto-main/home.php");
+                header("Location:http://localhost/proyecto-main/home.php");
             }
         
     }

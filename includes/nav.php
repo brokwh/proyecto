@@ -12,11 +12,11 @@
         <li class="nav-item">
           <a class="nav-link"  href="http://localhost/proyecto-main/views/productoView.php">Productos</a>
         </li>
-        <!--<li class="nav-item">
-
-          <a class="nav-link" href="#">Borrar</a>
-        </li>
         <li class="nav-item">
+
+          <a class="nav-link" href="http://localhost/proyecto-main/views/usuariosView.php">Usuarios</a>
+        </li>
+        <!--<li class="nav-item">
           <a class="nav-link" href="#">Buscar</a>
         </li>
         <li class="nav-item">
