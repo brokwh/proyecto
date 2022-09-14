@@ -19,10 +19,9 @@ if ($_SESSION['user'] == ''){
     <TABLE class='table'>
         <tr>
             <th>ID</th>
-            <th>Nombre</th>
             <th>Tipo</th>
-            <th>Precio</th>
             <th></th>
+            
             <th class='text-end'> <a class='btn btn-dark btn-info' role='button' href='../views/agregarProducto.php'>Agregar</a> </th>
             
         
@@ -36,10 +35,10 @@ if ($_SESSION['user'] == ''){
             //echo "<td>". $usuarios['tipo']. "</td>";
             //echo "<td>". $usuarios['precio']. "</td>";
 
-            echo "<td> <button type='button' data-toggle='modal' data-target='#productoEdit". $productos['id']."' class='btn btn-secondary' name='editarB' id='editarB' value=". $productos['id'].  "> Editar </button> </td>";
-            echo "<td> <button type='submit' class='btn btn-danger' name='eliminarB' id='eliminarB' value=". $productos['id']. "> Eliminar </button> </td>";
+            echo "<td> <button type='button' data-toggle='modal' data-target='#productoEdit". $usuarios['id']."' class='btn btn-secondary' name='editarB' id='editarB' value=". $usuarios['id'].  "> Editar </button> </td>";
+            echo "<td> <button type='submit' class='btn btn-danger' name='eliminarB' id='eliminarB' value=". $usuarios['id']. "> Eliminar </button> </td>";
             //modal//
-                echo "<div class='modal fade' id='productoEdit". $productos['id']."' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>
+                echo "<div class='modal fade' id='productoEdit". $usuarios['id']."' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>
                 <div class='modal-dialog modal-dialog-centered' role='document'>
                 <div class='modal-content'>
                     <div class='modal-header'>
@@ -69,7 +68,7 @@ if ($_SESSION['user'] == ''){
                     </div>
                     <div class='modal-footer'>
                     <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
-                    <button href='' type='submit' class='btn btn-primary' name = 'editBConfirmar' value=". $productos['id'].">Guardar cambios</button>
+                    <button href='' type='submit' class='btn btn-primary' name = 'editBConfirmar' value=". $usuarios['id'].">Guardar cambios</button>
                     </div>
                     </form>
                 </div>
