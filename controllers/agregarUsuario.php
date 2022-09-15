@@ -1,5 +1,5 @@
 <?php 
-require_once("../proyecto-main/models/Usuario.php");
+require_once("../proyecto/models/Usuario.php");
 $productos = new Usuario();
 
 if(isset($_POST['registroB'])){
@@ -8,7 +8,7 @@ if(isset($_POST['registroB'])){
     $pwd = $_POST['pwdRegistro'];
     $pin = $_POST['pinRegistro'];
     $productos->agregarUsuario($tipo, $pwd, $pin);
-    header("Location:http://localhost/proyecto-main/index.php");
+    header("Location:http://localhost/proyecto/index.php");
 } 
 
 ?>

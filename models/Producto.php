@@ -4,7 +4,7 @@ class Producto{
     private $productos;
 
     public function __construct(){
-        require_once("../models/db.php");
+        require_once("db.php");
         $this->conn=db::conexion();
         $this->productos = array();
     }

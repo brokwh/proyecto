@@ -3,7 +3,7 @@
 <head>
 <title>Ingreso</title>
 <?php include("includes/header.php");?>
-<?php require_once("../proyecto-main/controllers/agregarUsuario.php"); ?>
+<?php require_once("../proyecto/controllers/agregarUsuario.php"); ?>
 <style>
 </style>
 </head>

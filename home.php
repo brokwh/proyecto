@@ -5,16 +5,7 @@ if ($_SESSION['user'] == ''){
     $sesion->redirect();
 }
 ?>
-<style>
-    .bienvenida{
-    
-    margin: 0 auto;
-    font-size: 200px;
-    text-align: center;
-    font-style:italic;
-    font-variant-position: inherit;
-}
-</style>
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -28,6 +19,6 @@ if ($_SESSION['user'] == ''){
    
 
     <section>
-        <h1 class="bienvenida">Bienvenido <?php   echo  $_SESSION['user']; ?></h1> 
+        <h1>Bienvenido <?php   echo  $_SESSION['user']; ?></h1> 
     </section>
     <?php include("includes/footer.php"); ?>

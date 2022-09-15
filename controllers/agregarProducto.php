@@ -9,7 +9,7 @@ if(isset($_POST['agregarProductoB'])){//eliminar producto
     $tipo = $_POST['tipoProducto'];
     $precio = $_POST['precioProducto'];
     $productos->agregarProducto($nombre, $tipo, $precio);
-    header("Location:http://localhost/proyecto-main/views/productoView.php");
+    header("Location:http://localhost/proyecto/views/productoView.php");
 }
    
 
