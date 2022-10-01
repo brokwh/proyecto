@@ -16,8 +16,8 @@ if ($_SESSION['user'] == ''){
     require_once("../controllers/ListadoUsuariosController.php");
     echo "
     <input class='form-control' id='myInput' type='search' placeholder='Buscar..'>
-`    <form action='http://localhost/proyecto/views/usuariosView.php' method='post'>
-`    <TABLE class='table'>
+    <form action='http://localhost/proyecto/views/usuariosView.php' method='post'>
+    <TABLE class='table'>
         <tr>
             <th>ID</th>
             <th>Tipo</th>
@@ -120,11 +120,9 @@ if ($_SESSION['user'] == ''){
     ?>
 
         <script>
-
             function habilitarPIN(answer){
                 console.log(answer.value);
                 if (answer.value=='Mozo'||answer.value=='Caja'||answer.value=='Cocina'){
-                 
                     document.getElementById('pinDivModal').classList.remove('d-none');
                 }else{
                     
@@ -152,6 +150,8 @@ if ($_SESSION['user'] == ''){
             });
         });
         });
-    </script>
 
-<?php include("../includes/footer.php"); ?>
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {

@@ -22,8 +22,7 @@ $matrizUsuarios = $usuarios->getUsuarios();
         $pass = $_POST['pwdEdit'];
         $pin = $_POST['pinEdit'];
         
+
         $usuarios->editarUsuario($tipo, $pass, $pin, $_POST['editBConfirmar']);
+        $productos->editarProducto($nombre, $tipo, $precio, $_POST['editBConfirmar']);
         header("Location:http://localhost/proyecto/views/usuariosView.php");
-        }
-        
-        

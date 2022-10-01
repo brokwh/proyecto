@@ -37,13 +37,13 @@ if ($_SESSION['user'] == ''){
             echo "<td>". $productos['nombre']. "</td>";
             echo "<td>". $productos['tipo']. "</td>";
             echo "<td>". $productos['precio']. "</td>";
+
             echo "<td> <button type='submit' class='btn btn-primary' name='agregarB' id='agregarB' value=". $productos['id']. "> Agregar </button> </td>";
             echo "<td> <button type='button' data-toggle='modal' data-target='#productoDetalle". $productos['id']."' class='btn btn-secondary' name='detallesB' id='detallesB' value=". $productos['id'].  "> Detalles </button> </td>";
 
-            //modal//
-                echo "<div class='modal fade' id='productoDetalle". $productos['id']."' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>
-                <div class='modal-dialog modal-dialog-centered' role='document'>
-                <div class='modal-content'>
+
+            echo "<td> <button type='button' data-toggle='modal' data-target='#productoDetalle". $productos['id']."' class='btn btn-secondary' name='detallesB' id='detallesB' value=". $productos['id'].  "> Detalles </button> </td>";
+            echo "<td> <button type='submit' class='btn btn-danger' name='eliminarB' id='eliminarB' value=". $productos['id']. "> Eliminar </button> </td>";
                     <div class='modal-header'>
                         <h5 class='modal-title' id='exampleModalLongTitle'>Detalles</h5>
                         <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
