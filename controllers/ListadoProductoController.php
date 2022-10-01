@@ -10,7 +10,7 @@ $matrizProductos = $productos->getProductos();
             
         
         $productos->eliminarProducto($_POST['eliminarB']);
-        header("Location:http://localhost/proyecto-main/views/productoView.php");
+        header("Location:http://localhost/proyecto/views/productoView.php");
         }
 
     if(isset($_POST['editBConfirmar'])){//editar producto
@@ -23,7 +23,7 @@ $matrizProductos = $productos->getProductos();
         $precio = $_POST['precioEditProducto'];
         
         $productos->editarProducto($nombre, $tipo, $precio, $_POST['editBConfirmar']);
-        header("Location:http://localhost/proyecto-main/views/productoView.php");
+        header("Location:http://localhost/proyecto/views/productoView.php");
         }
         
         

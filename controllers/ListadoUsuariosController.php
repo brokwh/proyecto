@@ -9,8 +9,8 @@ $matrizUsuarios = $usuarios->getUsuarios();
 
             
         
-        $productos->eliminarProducto($_POST['eliminarB']);
-        header("Location:http://localhost/proyecto-main/views/usuariosView.php");
+        $usuarios->eliminarUsuario($_POST['eliminarB']);
+        header("Location:http://localhost/proyecto/views/usuariosView.php");
         }
 
     if(isset($_POST['editBConfirmar'])){//editar producto
@@ -18,12 +18,12 @@ $matrizUsuarios = $usuarios->getUsuarios();
        
       
 
-        $nombre = $_POST['nombreEditProducto'];
-        $tipo = $_POST['tipoEditProducto'];
-        $precio = $_POST['precioEditProducto'];
+        $tipo = $_POST['cargoRegistro'];
+        $pass = $_POST['pwdEdit'];
+        $pin = $_POST['pinEdit'];
         
-        $productos->editarProducto($nombre, $tipo, $precio, $_POST['editBConfirmar']);
-        header("Location:http://localhost/proyecto-main/views/usuariosView.php");
+        $usuarios->editarUsuario($tipo, $pass, $pin, $_POST['editBConfirmar']);
+        header("Location:http://localhost/proyecto/views/usuariosView.php");
         }
         
         

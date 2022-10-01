@@ -16,10 +16,9 @@ $usuario = new Usuario;
         $pinForm = $_POST['pin'];
 
     if(empty($_POST['cargo'])){
-
-       
-            
+    
     }else{
+        
         if($usuario->validarUsuario($cargoForm, $passForm, $pinForm)){
                     
             $sesion->setCurrentUser($cargoForm);
@@ -27,26 +26,28 @@ $usuario = new Usuario;
             
         
             if($usuario->getNombre() == "Administrador"){       
-                header("Location:http://localhost/proyecto-main/home.php");
+                header("Location:http://localhost/proyecto/home.php");
             }
             if($usuario->getNombre() == "Gerente"){
-                header("Location:http://localhost/proyecto-main/home.php");
+                header("Location:http://localhost/proyecto/home.php");
             }
             if($usuario->getNombre() == "Mozo"){
-                header("Location:http://localhost/proyecto-main/home.php");
+                header("Location:http://localhost/proyecto/home.php");
             }
             if($usuario->getNombre() == "Delivery"){
-                header("Location:http://localhost/proyecto-main/home.php");
+                header("Location:http://localhost/proyecto/home.php");
             }
             if($usuario->getNombre() == "Cocina"){
-                header("Location:http://localhost/proyecto-main/home.php");
+                header("Location:http://localhost/proyecto/home.php");
             }
             if($usuario->getNombre() == "Caja"){
-                header("Location:http://localhost/proyecto-main/home.php");
+                header("Location:http://localhost/proyecto/home.php");
             }
         
+    }else{
+        include_once('views/login.php');
     }
-    }    
+    }   
     }else{
         include_once('views/login.php');
     }

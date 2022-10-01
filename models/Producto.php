@@ -4,7 +4,7 @@ class Producto{
     private $productos;
 
     public function __construct(){
-        require_once("../models/db.php");
+        require_once("db.php");
         $this->conn=db::conexion();
         $this->productos = array();
     }
@@ -37,6 +37,16 @@ class Producto{
     public function agregarProducto($nombre, $tipo, $precio){
 
         $consulta = "INSERT INTO producto(nombre,tipo,precio) VALUES('$nombre','$tipo','$precio');";
+        echo $consulta;
+        $query = mysqli_query($this->conn, $consulta);
+        
+    }
+
+    //proord//
+
+    public function almacenarProductos($id, $tipo, $precio){
+
+        $consulta = "INSERT INTO proord(id,idOrdden,idProducto) VALUES('$nombre','$tipo','$precio');";
         echo $consulta;
         $query = mysqli_query($this->conn, $consulta);
         

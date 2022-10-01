@@ -54,7 +54,7 @@ class Usuario{
 
     public function agregarUsuario($tipo, $pwd, $pin){
 
-        $consulta = "INSERT INTO usuarios(tipo,pass,pin) VALUES('$tipo','$pwd','$pin');";
+        $consulta = "INSERT INTO usuarios(tipo,pass,pin) VALUES('$tipo',$pwd,$pin);";
         echo $consulta;
         $query = mysqli_query($this->conn, $consulta);
         
@@ -65,6 +65,20 @@ class Usuario{
         $consulta = "SELECT * FROM `usuarios` WHERE email = '$email'";
         $query = mysqli_query($this->conn, $consulta);
         
+    }
+
+    public function eliminarUsuario($usuario){
+
+        $consulta = "DELETE FROM usuarios WHERE id IN($usuario) ";
+        $query = mysqli_query($this->conn, $consulta);
+    }
+
+    public function editarUsuario($tipo, $pass, $pin, $usuario){
+
+        $consulta = "UPDATE usuarios
+        SET tipo = '$tipo', pass = '$pass', pin = $pin
+        WHERE id = $usuario;";
+        $query = mysqli_query($this->conn, $consulta);
     }
 
 }

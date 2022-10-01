@@ -3,7 +3,7 @@
 <head>
 <title>Ingreso</title>
 <?php include("includes/header.php");?>
-<?php require_once("../proyecto-main/controllers/agregarUsuario.php"); ?>
+<?php require_once("../proyecto/controllers/agregarUsuario.php"); ?>
 <style>
 </style>
 </head>
@@ -55,12 +55,12 @@ footer{
                     </div>
                     <div class="form-outline mb-4  d-none" id="pinDiv">
                         <label>PIN</label>
-                        <input type="password" class="form-control"  id="pin" name="pin" placeholder="Ingrese PIN" >
+                        <input type="password" class="form-control"  id="pin" name="pin" placeholder="Ingrese PIN" required>
                     </div>
                     
                     <div class="form-outline mb-4  d-none" id="pwdDiv">
                         <label>Contraseña:</label>
-                        <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Ingrese contraseña">              
+                        <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Ingrese contraseña" required>              
 
                     </div>   
                                  
@@ -82,7 +82,7 @@ footer{
             </div>
         </div>
    
-
+                <!--MODAL-->
                 <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -93,7 +93,7 @@ footer{
                         </button>
                 </div>
                     
-                        <form action="" method="post">
+                        <form action="" method="post" class = "form-signin">
                                 <div class="modal-body mx-3">
                                 <div class="form-group">
                                         <label>Cargo</label>
@@ -113,12 +113,12 @@ footer{
 
                                     <div class="form-outline mb-4  d-none" id="pinDivModal">
                                         <label>PIN</label>
-                                        <input type="password" class="form-control"  id="pinRegistro" name="pinRegistro" placeholder="Ingrese PIN" >
+                                        <input type="password" class="form-control"  id="pinRegistro" name="pinRegistro" placeholder="Ingrese PIN" required>
                                     </div>
 
                                     <div class="form-outline mb-4  d-none" id="pwdDivModal">
                                         <label>Contraseña:</label>
-                                        <input type="password" class="form-control" id="pwdRegistro" name="pwdRegistro" placeholder="Ingrese contraseña">              
+                                        <input type="password" class="form-control" id="pwdRegistro" name="pwdRegistro" placeholder="Ingrese contraseña" required>              
                                     </div>        
 
                                 </div>

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
            <div class="container-fluid">
-    <a class="navbar-brand" href="http://localhost/proyecto-main/home.php">SANTA - COMANDAS</a>
+    <a class="navbar-brand" href="http://localhost/proyecto/home.php">SANTA - COMANDAS</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -10,16 +10,15 @@
           <a class="nav-link active" aria-current="page" href=""></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link"  href="http://localhost/proyecto-main/views/productoView.php">Productos</a>
+          <a class="nav-link"  href="http://localhost/proyecto/views/productoView.php">Productos</a>
         </li>
         <li class="nav-item">
-
-          <a class="nav-link" href="http://localhost/proyecto-main/views/usuariosView.php">Usuarios</a>
+          <a class="nav-link" href="http://localhost/proyecto/views/usuariosView.php">Usuarios</a>
         </li>
-        <!--<li class="nav-item">
-          <a class="nav-link" href="#">Buscar</a>
+       <li class="nav-item">
+          <a class="nav-link" href="http://localhost/proyecto/views/comandasView.php">Comandas</a>
         </li>
-        <li class="nav-item">
+         <!--<li class="nav-item">
           <a class="nav-link" href="#">Modificar</a>
         </li>
         <li class="nav-item">
@@ -32,7 +31,7 @@
     </div>
     <div class="navbar-nav ms-auto">
         <form action="">
-                <a href="http://localhost/proyecto-main/logout.php" name="logout" class="nav-item nav-link">Salir</a>
+                <a href="http://localhost/proyecto/logout.php" name="logout" class="nav-item nav-link">Salir</a>
           </form>
     </div>
   </div>
