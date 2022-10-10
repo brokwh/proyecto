@@ -106,7 +106,7 @@ if ($_SESSION['user'] == ''){
     ?>
 
     <script>
-    $(document).ready(function(){
+    $(document).ready(function(){// script buscador
       $("#myInput").on("keyup", function() {
         var value = $(this).val().toLowerCase();
         $("#myTable tr").filter(function() {

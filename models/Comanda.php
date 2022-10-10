@@ -7,8 +7,9 @@ class Comanda{
         require_once("db.php");
         $this->conn=db::conexion();
         $this->comandas = array();
+        
     }
-
+  
     public function getComandas(){
         $consulta = "SELECT * FROM orden";
         $query = mysqli_query($this->conn, $consulta);
@@ -28,10 +29,11 @@ class Comanda{
 
     public function editarComanda($nombre, $tipo, $precio, $producto){
 
-        $consulta = "UPDATE producto
+        $consulta = "UPDATE proord
         SET nombre = '$nombre', tipo = '$tipo', precio = $precio
         WHERE id = $producto;";
         $query = mysqli_query($this->conn, $consulta);
+        
     }
 
     public function generarComanda($mesa){
@@ -40,11 +42,12 @@ class Comanda{
         echo $consulta;
         $query = mysqli_query($this->conn, $consulta);
         
+        
     }
 
-    public function agregarComanda($nombre, $tipo, $precio, $detalles){
+    public function agregarComanda($idPro, $idOrd){
 
-        $consulta = "INSERT INTO proord (id,idPro,idOrd, descripcion) VALUES('','$producto','$BotonConfirmador', '$detalles');";
+        $consulta = "INSERT INTO proord (idPro,idOrd, descripcion) VALUES($idPro, $idOrd);";
         echo $consulta;
         $query = mysqli_query($this->conn, $consulta);
         

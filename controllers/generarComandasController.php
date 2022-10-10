@@ -4,7 +4,7 @@ require_once("../../models/Producto.php");
 require_once("../../models/Comanda.php");
 $productos = new Producto();
 $comandas = new Comanda();
-$matrizProductos = $productos->getProductos();
+$matrizProductos = $productos->getProductos(); 
 
     if(isset($_POST['enviarB'])){//agregar producto a la comanda
      
@@ -32,5 +32,5 @@ $matrizProductos = $productos->getProductos();
         header("Location:http://localhost/proyecto/views/productoView.php");
         }
         
-        
+   //notas:      
 ?>

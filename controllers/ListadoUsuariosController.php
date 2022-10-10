@@ -26,3 +26,5 @@ $matrizUsuarios = $usuarios->getUsuarios();
         $usuarios->editarUsuario($tipo, $pass, $pin, $_POST['editBConfirmar']);
         $productos->editarProducto($nombre, $tipo, $precio, $_POST['editBConfirmar']);
         header("Location:http://localhost/proyecto/views/usuariosView.php");
+    }
+    ?>
