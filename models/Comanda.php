@@ -33,7 +33,14 @@ class Comanda{
         SET nombre = '$nombre', tipo = '$tipo', precio = $precio
         WHERE id = $producto;";
         $query = mysqli_query($this->conn, $consulta);
-        
+
+    }
+    public function generarComanda($mesa){
+
+        $consulta = "INSERT INTO orden (numeroMesa) VALUES('$mesa');";
+        echo $consulta;
+        $query = mysqli_query($this->conn, $consulta);
+
     }
 
     public function generarComanda($mesa){
@@ -50,7 +57,8 @@ class Comanda{
           $conn->close();
           
 
-    }
+    
+
 
     public function agregarComanda($idPro, $idOrd){
 

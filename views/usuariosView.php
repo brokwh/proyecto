@@ -156,6 +156,7 @@ if ($_SESSION['user'] == ''){
         $("#myInput").on("keyup", function() {
             var value = $(this).val().toLowerCase();
             $("#myTable tr").filter(function() {
+
     </script>            
 
     <?php include("../includes/footer.php"); ?>
