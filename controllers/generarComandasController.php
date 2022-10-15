@@ -4,12 +4,14 @@ require_once("../../models/Producto.php");
 require_once("../../models/Comanda.php");
 $productos = new Producto();
 $comandas = new Comanda();
-$matrizProductos = $productos->getProductos();
+$matrizProductos = $productos->getProductos(); 
+echo $comandas->conn->insert_id;
 
     if(isset($_POST['enviarB'])){//agregar producto a la comanda
-     
-        $comandas->generarComanda($_POST['mesaInput']);
-        header("Location:http://localhost/proyecto/views/comandas/generarComandas.php");
+        
+        
+        $mesa = $_POST['mesaInput'];
+        header("Location:http://localhost/proyecto/views/comandas/enviarComandas.php?mesa=$mesa");
     }
     if(isset($_POST['agregarB'])){//agregar producto a la comanda
 
@@ -32,5 +34,5 @@ $matrizProductos = $productos->getProductos();
         header("Location:http://localhost/proyecto/views/productoView.php");
         }
         
-        
+   //notas:      
 ?>

@@ -14,7 +14,7 @@ if ($_SESSION['user'] == ''){
 
     <?php 
     require_once("../../controllers/generarComandasController.php");
-    echo "
+    echo "<section class='contenedortabla'><div class=''>
     <input class='form-control' id='myInput' type='search' placeholder='Buscar..'>
     <form action='http://localhost/proyecto/views/comandas/generarComandas.php' method='post'>
     <TABLE class='table'>
@@ -42,30 +42,32 @@ if ($_SESSION['user'] == ''){
             echo "<td> <button type='button' data-toggle='modal' data-target='#productoDetalle". $productos['id']."' class='btn btn-secondary' name='detallesB' id='detallesB' value=". $productos['id'].  "> Detalles </button> </td>";
 
 
-            echo "<td> <button type='button' data-toggle='modal' data-target='#productoDetalle". $productos['id']."' class='btn btn-secondary' name='detallesB' id='detallesB' value=". $productos['id'].  "> Detalles </button> </td>";
-            echo "<td> <button type='submit' class='btn btn-danger' name='eliminarB' id='eliminarB' value=". $productos['id']. "> Eliminar </button> </td>";
-                    <div class='modal-header'>
-                        <h5 class='modal-title' id='exampleModalLongTitle'>Detalles</h5>
-                        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                            <span aria-hidden='true'>&times;</span>
-                        </button>
-                    </div>
-                    <div class='modal-body'>
-                    
-                        <form class='form-inline' action='' method='post'>
-                        <div class='form-group'>
-                    
-                        <textarea class='form-control' id='detalles' name='detalles' rows='3'></textarea>
-                    </div>
-                    <br>
-                        <button href='' type='submit' class='btn btn-primary' name = 'detallesBConfirmar' value=". $productos['id'].">Guardar cambios</button>
-                    </div>
-                    </form>
-                    </div>
-                </div>
-            
-            </div>";
+                
           //
+          echo "<div class='modal fade' id='usuarioEdit". $productos['id']."' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>
+          <div class='modal-dialog modal-dialog-centered' role='document'>
+          <div class='modal-header'>
+                                <h5 class='modal-title' id='exampleModalLongTitle'>Detalles</h5>
+                                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                    <span aria-hidden='true'>&times;</span>
+                                </button>
+                            </div>
+                            <div class='modal-body'>
+                            
+                                <form class='form-inline' action='' method='post'>
+                                <div class='form-group'>
+                            
+                                <textarea class='form-control' id='detalles' name='detalles' rows='3'></textarea>
+                            </div>
+                            <br>
+                                <button href='' type='submit' class='btn btn-primary' name = 'detallesBConfirmar' value=". $productos['id'].">Guardar cambios</button>
+                            </div>
+                            </form>
+                            </div>
+                    </div>
+          </div>
+      
+      </div>";
             echo "</tr>";
             echo "</form>";
             
@@ -83,11 +85,11 @@ if ($_SESSION['user'] == ''){
         }
     echo "</TABLE>";
 
-    //////////
+    ////////// tabla de carrito
 
     echo "
     <p>Total producutos:</p>
-    <form action='' method='post'>
+    
     <TABLE class='table table-sm table-dark'>
         <tr>
             <th>ID</th>
@@ -96,12 +98,16 @@ if ($_SESSION['user'] == ''){
             <th>Precio</th>
             <th></th>
             <th class='text-end'>
+             <form action='' method='post'>
              <input type='submit' class='btn btn-primary' name='enviarB' id='enviarB'>
              <input class='form-control-sm col-sm-1' type='number' name='mesaInput' id='mesaInput' required>
+             </form>
+             
             </th>
             
         </tr>
-        <tbody id='myTable'>"
+        <tbody id='myTable'>
+        <form action='' method='post'>"
         ;
         if($matrizProductos == true){
         foreach($matrizProductos as $productos){
@@ -157,7 +163,8 @@ if ($_SESSION['user'] == ''){
         }
     echo "</TABLE>";
     ?>
-
+</div>
+</section>
        <script>
     $(document).ready(function(){
       $("#myInput").on("keyup", function() {

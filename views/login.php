@@ -1,33 +1,35 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<title>Ingreso</title>
-<?php include("includes/header.php");?>
-<?php require_once("../proyecto/controllers/agregarUsuario.php"); ?>
+
 <style>
-</style>
-</head>
-<body>
-<style>
- 
-.contenedor{
+        .contenedor{
     opacity:90%;
 margin-left: 20%;
 margin-right:20% ;
 }
-footer{
-    width: 100%;
-    height: 81px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
 
-    }
 
     .d-none{
         display: none;
     }
-</style>
+    body {
+  background: url('includes/imagenes/pescaderias-marisquerias-bogota.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+ -webkit-font-smoothing: antialiased;
+ text-rendering: optimizeLegibility;
+-moz-osx-font-smoothing: grayscale;
+}
+    </style> 
+    <title>Ingreso</title>
+
+<?php require_once("../proyecto/controllers/agregarUsuario.php"); ?>
+
+</head>
+<body>
 </head>
 <?php include("includes/navLogin.php");?>
 
@@ -37,7 +39,7 @@ footer{
             <div class="container-fluid p-3 my-3 bg-dark text-white">
          <h3>LOGIN</h3>
          
-         <form action =""  method="post" class = "form-signin">
+         <form action =""  method="post" class = "form-signin" novalidate>
    
                 <div class="form-group">
                         <label>Cargo</label>
@@ -93,7 +95,7 @@ footer{
                         </button>
                 </div>
                     
-                        <form action="" method="post" class = "form-signin">
+                        <form action="" method="post" class = "form-signin"novalidate>
                                 <div class="modal-body mx-3">
                                 <div class="form-group">
                                         <label>Cargo</label>

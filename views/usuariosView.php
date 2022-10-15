@@ -14,7 +14,7 @@ if ($_SESSION['user'] == ''){
 
     <?php 
     require_once("../controllers/ListadoUsuariosController.php");
-    echo "
+    echo "<section class='contenedortabla'><div class=''>
     <input class='form-control' id='myInput' type='search' placeholder='Buscar..'>
     <form action='http://localhost/proyecto/views/usuariosView.php' method='post'>
     <TABLE class='table'>
@@ -118,7 +118,8 @@ if ($_SESSION['user'] == ''){
        // echo $_POST['editarB'];
        // echo $_POST['eliminarB'];
     ?>
-
+</div>
+</section>
         <script>
             function habilitarPIN(answer){
                 console.log(answer.value);
@@ -151,7 +152,10 @@ if ($_SESSION['user'] == ''){
         });
         });
 
-    $(document).ready(function(){
-      $("#myInput").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $("#myTable tr").filter(function() {
+        $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function() {
+    </script>            
+
+    <?php include("../includes/footer.php"); ?>
