@@ -33,8 +33,6 @@ class Comanda{
         SET nombre = '$nombre', tipo = '$tipo', precio = $precio
         WHERE id = $producto;";
         $query = mysqli_query($this->conn, $consulta);
-        
-    }
 
     public function generarComanda($mesa){
        

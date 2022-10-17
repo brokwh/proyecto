@@ -76,6 +76,7 @@ tr:hover td{
 	background-color:#1f2121;
 	color: white;
 }
+
 .contenedor1{
     margin-top:1%;
     box-shadow: 3px 4px 0px 0px black;
