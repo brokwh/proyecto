@@ -17,12 +17,14 @@ $matrizUsuarios = $usuarios->getUsuarios();
 
        
       
-
+        $correo = $_POST['correo'];
         $tipo = $_POST['cargoRegistro'];
         $pass = $_POST['pwdEdit'];
-        $pin = $_POST['pinEdit'];
-        
+        $id = $_POST['editBConfirmar'] ;
+        echo"$correo , $tipo ,$pass, $id";
 
-        $usuarios->editarUsuario($tipo, $pass, $pin, $_POST['editBConfirmar']);
-        $productos->editarProducto($nombre, $tipo, $precio, $_POST['editBConfirmar']);
+        $usuarios->editarUsuario($correo, $tipo, $pass, $id);
+    
         header("Location:http://localhost/proyecto/views/usuariosView.php");
+    }
+    ?>

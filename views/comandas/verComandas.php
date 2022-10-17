@@ -14,7 +14,7 @@ if ($_SESSION['user'] == ''){
 
     <?php 
     require_once("../../controllers/verComandasController.php");
-    echo "
+    echo "<section class='contenedortabla'><div class=''>
     <input class='form-control' id='myInput' type='search' placeholder='Buscar..'>
     <form action='http://localhost/proyecto-main/views/comandas/verComandas.php' method='post'>
     <TABLE class='table'>
@@ -83,7 +83,8 @@ if ($_SESSION['user'] == ''){
     echo "</TABLE>";
 
     ?>
-
+</div>
+</section>
        <script>
     $(document).ready(function(){
       $("#myInput").on("keyup", function() {

@@ -1,33 +1,35 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<title>Ingreso</title>
-<?php include("includes/header.php");?>
-<?php require_once("../proyecto/controllers/agregarUsuario.php"); ?>
+
 <style>
-</style>
-</head>
-<body>
-<style>
- 
-.contenedor{
+        .contenedor{
     opacity:90%;
 margin-left: 20%;
 margin-right:20% ;
 }
-footer{
-    width: 100%;
-    height: 81px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
 
-    }
 
     .d-none{
         display: none;
     }
-</style>
+    body {
+  background: url('includes/imagenes/pescaderias-marisquerias-bogota.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+ -webkit-font-smoothing: antialiased;
+ text-rendering: optimizeLegibility;
+-moz-osx-font-smoothing: grayscale;
+}
+    </style> 
+    <title>Ingreso</title>
+
+<?php //require_once("../proyecto/controllers/agregarUsuario.php"); ?>
+
+</head>
+<body>
 </head>
 <?php include("includes/navLogin.php");?>
 
@@ -37,35 +39,37 @@ footer{
             <div class="container-fluid p-3 my-3 bg-dark text-white">
          <h3>LOGIN</h3>
          
-         <form action =""  method="post" class = "form-signin">
-   
-                <div class="form-group">
-                        <label>Cargo</label>
-                        <select class="form-control" id="cargo" name="cargo" onchange="habilitarPWD(this) || habilitarPIN(this)">
-                        <option>Elija su cargo</option>
-                        <option>Mozo</option>
-                        <option>Caja</option>
-                        <option>Cocina</option>
+         <form action =""  method="post" class = "form-signin" novalidate>
+             
+         <div class="form-group">
+                        <label>tipo</label>
+                        <select class="form-control" id="cargoRegistro" name="cargoRegistro">
+                        <option disabled selected value>Elija su cargo</option>
+                        <option>Administrador</option>
                         <option>Gerente</option>
-                        <option>Administrador</option>                 
+                        <option>Mozo</option>
+                        <option>Caja</option>   
+                        <option>Cocina</option>
+                                      
                         
-                    </select>
-                    
-                     
+                        </select>            
                     </div>
-                    <div class="form-outline mb-4  d-none" id="pinDiv">
-                        <label>PIN</label>
-                        <input type="password" class="form-control"  id="pin" name="pin" placeholder="Ingrese PIN" required>
-                    </div>
+                    <br>
+
+                    <div class="form-outline mb-4" id="pinDivModal">
+                  <label>Correo</label>
+                   <input type="text" class="form-control"  id="correo" name="correo" placeholder="Ingrese correo" required>
+                   </div>
+
                     
-                    <div class="form-outline mb-4  d-none" id="pwdDiv">
+                    <div class="form-outline mb-4" id="pwdDiv">
                         <label>Contraseña:</label>
                         <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Ingrese contraseña" required>              
 
                     </div>   
                                  
                     <div class="text-start">
-                    <a href="http://localhost/proyecto-main/views/recuperarPwd.php"><small>Recuperar contraseña</small></a>
+                    <a href="views/recuperarPwd.php"><small>Recuperar contraseña</small></a>
                     </div>
                     <br>
                     <div class="form-check">
@@ -82,7 +86,7 @@ footer{
             </div>
         </div>
    
-                <!--MODAL-->
+               <!-- MODAL
                 <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -93,30 +97,28 @@ footer{
                         </button>
                 </div>
                     
-                        <form action="" method="post" class = "form-signin">
+                        <form action="" method="post" class = "form-signin"novalidate>
                                 <div class="modal-body mx-3">
-                                <div class="form-group">
-                                        <label>Cargo</label>
-                                        <select class="form-control" id="cargoRegistro" name="cargoRegistro" onchange="habilitarPWD(this) || habilitarPIN(this)">
-                                        <option>Elija su cargo</option>
-                                        <option>Mozo</option>
-                                        <option>Caja</option>
-                                        <option>Cocina</option>
-                                        <option>Gerente</option>
-                                        <option>Administrador</option>                 
-                                        </select>
-                                        
-                                    
-                                    
-                                    </div>
-                                    <br>
 
-                                    <div class="form-outline mb-4  d-none" id="pinDivModal">
-                                        <label>PIN</label>
-                                        <input type="password" class="form-control"  id="pinRegistro" name="pinRegistro" placeholder="Ingrese PIN" required>
+                                    <div class="form-outline mb-4" >
+                                        <label>Correo</label>
+                                        <input type="text" class="form-control"  id="correo" name="correo" placeholder="Ingrese correo" required>
                                     </div>
 
-                                    <div class="form-outline mb-4  d-none" id="pwdDivModal">
+                                    <div class="form-group">
+                        <label>tipo</label>
+                        <select class="form-control" id="cargoRegistro" name="cargoRegistro">
+                        <option disabled selected value>Elija su cargo</option>
+                        <option>Administrador</option>
+                        <option>Gerente</option>
+                        <option>Mozo</option>
+                        <option>Caja</option>   
+                        <option>Cocina</option>
+                                      
+                        
+                        </select>            
+                    </div>
+                                    <div class="form-outline mb-4">
                                         <label>Contraseña:</label>
                                         <input type="password" class="form-control" id="pwdRegistro" name="pwdRegistro" placeholder="Ingrese contraseña" required>              
                                     </div>        
@@ -127,38 +129,11 @@ footer{
                                 </div>
                         </form>
                     </div>
-                </div>
+                </div>-->
         </div>
-
-           
-
-          
-
-        <script>
-            function habilitarPIN(answer){
-                console.log(answer.value);
-                if (answer.value=='Mozo'||answer.value=='Caja'||answer.value=='Cocina'){
-                    document.getElementById('pinDiv').classList.remove('d-none');
-                    document.getElementById('pinDivModal').classList.remove('d-none');
-                }else{
-                    document.getElementById('pinDiv').classList.add('d-none');
-                    document.getElementById('pinDivModal').classList.add('d-none');
-                }
-                               
-            };
-            function habilitarPWD(answer){
-                console.log(answer.value);
-                if (answer.value=='Gerente'||answer.value=='Administrador'){
-                    document.getElementById('pwdDiv').classList.remove('d-none');
-                    document.getElementById('pwdDivModal').classList.remove('d-none');
-                }else{
-                    document.getElementById('pwdDiv').classList.add('d-none');
-                    document.getElementById('pwdDivModal').classList.add('d-none');
-                }
-            };
-
-            function Toggle() {
-                var temp = document.getElementById("pin");
+<script>
+        function Toggle() {
+            
                 var tempp = document.getElementById("pwd");
                     if (temp.type === "password") {
                         temp.type = "text";
@@ -177,7 +152,6 @@ footer{
                 
             
         </script>
-
         </body>
 <!-- final body -->
 <?php include("includes/footer.php"); ?>

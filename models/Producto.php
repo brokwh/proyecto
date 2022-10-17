@@ -1,7 +1,8 @@
 <?php
 class Producto{ 
-    private $conn; 
+    public $conn; 
     private $productos;
+    private $ultimoId;
 
     public function __construct(){
         require_once("db.php");
@@ -51,6 +52,9 @@ class Producto{
         $query = mysqli_query($this->conn, $consulta);
         
     }
+
+   
+
 
 }
 ?>

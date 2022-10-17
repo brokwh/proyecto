@@ -11,15 +11,15 @@ $usuario = new Usuario;
 
     if (isset($_POST['ingresar'])){
 
-        $cargoForm = $_POST['cargo'];
-        $passForm = $_POST['pwd'];
-        $pinForm = $_POST['pin'];
+        $correo = $_POST['correo'];
+        $pass = $_POST['pwd'];
+        $cargoForm= $_POST['cargoRegistro'];
 
-    if(empty($_POST['cargo'])){
+    if(empty($_POST['correo'])){
     
     }else{
         
-        if($usuario->validarUsuario($cargoForm, $passForm, $pinForm)){
+        if($usuario->validarUsuario($correo, $pass)){
                     
             $sesion->setCurrentUser($cargoForm);
             $usuario->setUser($sesion->getCurrentUser());

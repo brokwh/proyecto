@@ -17,13 +17,13 @@ class Usuario{
         
         
         while($filas = mysqli_fetch_array($query)){
-            $this->productos[] = $filas;
+            $this->usuarios[] = $filas;
         }
-        return $this->productos;
+        return $this->usuarios;
     }
 
-    public function validarUsuario($user, $pass, $pin){
-        $sql = ('SELECT * FROM usuarios WHERE tipo = "'. $user .'"  AND pass ="'. $pass .'" OR pin ="'. $pin .'"');
+    public function validarUsuario($correo, $pass){
+        $sql = ("SELECT * FROM usuarios WHERE correo =  '$correo'   AND pass = '$pass'");
         $query= mysqli_query($this->conn, $sql);
     
         if(mysqli_fetch_array($query)){
@@ -52,9 +52,8 @@ class Usuario{
         return $this->tipo;
     }
 
-    public function agregarUsuario($tipo, $pwd, $pin){
-
-        $consulta = "INSERT INTO usuarios(tipo,pass,pin) VALUES('$tipo',$pwd,$pin);";
+    public function agregarUsuario($correo,$tipo, $pwd ){
+        $consulta = "INSERT INTO usuarios(correo,tipo,pass) VALUES('$correo','$tipo', '$pwd' );";
         echo $consulta;
         $query = mysqli_query($this->conn, $consulta);
         
@@ -73,10 +72,10 @@ class Usuario{
         $query = mysqli_query($this->conn, $consulta);
     }
 
-    public function editarUsuario($tipo, $pass, $pin, $usuario){
+    public function editarUsuario($correo, $tipo, $pass, $usuario){
 
         $consulta = "UPDATE usuarios
-        SET tipo = '$tipo', pass = '$pass', pin = $pin
+        SET correo = '$correo', tipo = '$tipo', pass = '$pass'
         WHERE id = $usuario;";
         $query = mysqli_query($this->conn, $consulta);
     }
