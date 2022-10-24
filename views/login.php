@@ -49,7 +49,10 @@ body {
                         <option>Caja</option>
                         <option>Cocina</option>
                         <option>Gerente</option>
-                        <option>Administrador</option>                 
+                        <option>Mozo</option>
+                        <option>Caja</option>   
+                        <option>Cocina</option>
+                                      
                         
                     </select>
                     
@@ -66,8 +69,15 @@ body {
                         <label>PIN</label>
                         <input type="password" class="form-control"  id="pin" name="pin" placeholder="Ingrese PIN" novalidate>
                     </div>
+                    <br>
+
+                    <div class="form-outline mb-4" id="pinDivModal">
+                  <label>Correo</label>
+                   <input type="text" class="form-control"  id="correo" name="correo" placeholder="Ingrese correo" required>
+                   </div>
+
                     
-                    <div class="form-outline mb-4  d-none" id="pwdDiv">
+                    <div class="form-outline mb-4" id="pwdDiv">
                         <label>Contraseña:</label>
                         <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Ingrese contraseña" novalidate>              
                     </div> 
@@ -90,7 +100,7 @@ body {
             </div>
         </div>
    
-                <!--MODAL-->
+               <!-- MODAL
                 <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -101,7 +111,7 @@ body {
                         </button>
                 </div>
                     
-                        <form action="" method="post" class = "form-signin">
+                        <form action="" method="post" class = "form-signin"novalidate>
                                 <div class="modal-body mx-3">
                                 <div class="form-group">
                                         <label>Cargo</label>
@@ -129,7 +139,20 @@ body {
                                         <input type="password" class="form-control"  id="pinRegistro" name="pinRegistro" placeholder="Ingrese PIN" required>
                                     </div>
 
-                                    <div class="form-outline mb-4  d-none" id="pwdDivModal">
+                                    <div class="form-group">
+                        <label>tipo</label>
+                        <select class="form-control" id="cargoRegistro" name="cargoRegistro">
+                        <option disabled selected value>Elija su cargo</option>
+                        <option>Administrador</option>
+                        <option>Gerente</option>
+                        <option>Mozo</option>
+                        <option>Caja</option>   
+                        <option>Cocina</option>
+                                      
+                        
+                        </select>            
+                    </div>
+                                    <div class="form-outline mb-4">
                                         <label>Contraseña:</label>
                                         <input type="password" class="form-control" id="pwdRegistro" name="pwdRegistro" placeholder="Ingrese contraseña" required>              
                                     </div>        
@@ -140,7 +163,7 @@ body {
                                 </div>
                         </form>
                     </div>
-                </div>
+                </div>-->
         </div>
 <script>
 

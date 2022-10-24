@@ -11,10 +11,10 @@ if ($_SESSION['user'] == ''){
 <head>
     
     <title>Agregar productos</title>
-<?php include("../includes/header.php");?>
+
     <?php include("../includes/nav.php");?>
     <?php require_once("../controllers/agregarProducto.php"); ?>
-
+<?php include("../includes/header.php"); ?>
 
 <div class="contenedor1 container justify-content-center h-100 text-center">
         <br>  
@@ -30,6 +30,7 @@ if ($_SESSION['user'] == ''){
                     <div class="form-group">
                         <label>Tipo</label>
                         <select class="form-control" id="tipoProducto" name="tipoProducto">
+                        <option disabled selected value>Elija su producto</option>
                         <option>Bebida</option>
                         <option>Plato</option>
                         <option>Postre</option>                

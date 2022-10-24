@@ -6,7 +6,6 @@ $productos = new Producto();
 $comandas = new Comanda();
 $matrizProductos = $productos->getProductos(); 
 
-
    
 
 

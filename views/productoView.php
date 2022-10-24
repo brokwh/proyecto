@@ -9,7 +9,8 @@ if ($_SESSION['user'] == ''){
 <html lang="es">
 <head>
 <title>Productos</title>
-<?php include("../includes/header.php");?>
+<?php  require_once("../controllers/ListadoProductoController.php"); 
+include("../includes/header.php");?>
     <?php include("../includes/nav.php");?>
 
     <?php 
@@ -37,7 +38,7 @@ if ($_SESSION['user'] == ''){
             echo "<td>". $productos['id']. "</td>";
             echo "<td>". $productos['nombre']. "</td>";
             echo "<td>". $productos['tipo']. "</td>";
-            echo "<td>". $productos['precio']. "</td>";
+            echo "<td>". $productos['precio']. "$</td>";
 
             echo "<td> <button type='button' data-toggle='modal' data-target='#productoEdit". $productos['id']."' class='btn btn-secondary' name='editarB' id='editarB' value=". $productos['id'].  "> Editar </button> </td>";
             echo "<td> <button type='submit' class='btn btn-danger' name='eliminarB' id='eliminarB' value=". $productos['id']. "> Eliminar </button> </td>";
@@ -56,11 +57,12 @@ if ($_SESSION['user'] == ''){
                     <form class='form-inline' action='' method='post'>
                     <div class='form-group'>
                     <label for='text'>Nombre:</label>
-                    <input type='text' class='form-control' id='nombreEditProducto' name='nombreEditProducto'>
+                    <input type='text' class='form-control' id='nombreEditProducto' name='nombreEditProducto'  value='". $productos['nombre']."'>
                     </div>
                     <div class='form-group'>
                     <label>Tipo</label>
                     <select class='form-control' id='tipoEditProducto' name='tipoEditProducto'>
+                    <option disabled selected value >". $productos['tipo']."</option>
                     <option>Bebida</option>
                     <option>Plato</option>
                     <option>Postre</option>                
@@ -68,7 +70,7 @@ if ($_SESSION['user'] == ''){
                 </div>
                 <div class='form-group'>
                     <label for='text'>Precio:</label>
-                    <input type='text' class='form-control' id='precioEditProducto' name='precioEditProducto'>
+                    <input type='text' class='form-control' id='precioEditProducto' name='precioEditProducto' value='". $productos['precio']."'>
                     </div>
                     <div class='modal-footer'>
                     <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
