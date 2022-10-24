@@ -1,33 +1,33 @@
 <?php
-class Comanda{ 
+class Orden{ 
     public $conn; 
-    private $comandas;
+    private $orden;
 
     public function __construct(){
         require_once("db.php");
         $this->conn=db::conexion();
-        $this->comandas = array();
+        $this->orden = array();
         
     }
   
-    public function getComandas(){
-        $consulta = "SELECT * FROM orden";
+    public function getOrden(){
+        $consulta = "SELECT * FROM orden,mesa WHERE orden.numeroMesa=mesa.id;";
         $query = mysqli_query($this->conn, $consulta);
         
         
         while($filas = mysqli_fetch_array($query)){
-            $this->comandas[] = $filas;
+            $this->orden[] = $filas;
         }
-        return $this->comandas;
+        return $this->orden;
     }
 
-    public function eliminarComanda($comanda){
+    public function eliminarComanda($orden){
 
-        $consulta = "DELETE FROM orden WHERE id IN($comanda) ";
+        $consulta = "DELETE FROM orden,mesa WHERE orden.numeroMesa IN($orden) ";
         $query = mysqli_query($this->conn, $consulta);
     }
 
-    public function editarComanda($nombre, $tipo, $precio, $producto){
+    /*public function editarComanda($nombre, $tipo, $precio, $producto){
 
         $consulta = "UPDATE proord
         SET nombre = '$nombre', tipo = '$tipo', precio = $precio
@@ -42,7 +42,7 @@ class Comanda{
         $conn = $this->conn;
         if ($conn->query($sql) === TRUE) {
             $last_id = $conn->insert_id;
-            return $last_id;
+            echo "New record created successfully. Last inserted ID is: " . $last_id;
           } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
           }
@@ -54,8 +54,10 @@ class Comanda{
 
     public function agregarComanda($idPro, $idOrd){
 
-        $consulta = "INSERT INTO proord (idProducto,idOrden, descripcion) VALUES($idPro, $idOrd, '');";
+        $consulta = "INSERT INTO proord (idPro,idOrd, descripcion) VALUES($idPro, $idOrd);";
+        echo $consulta;
+        
         $query = mysqli_query($this->conn, $consulta);
         
-    }
+    }*/
 }

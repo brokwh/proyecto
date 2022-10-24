@@ -9,24 +9,25 @@ if ($_SESSION['user'] == ''){
 <html lang="es">
 <head>
 <title>Usuarios</title>
-<?php include("../includes/header.php");?>
+<?php include("../includes/header.php");
+require_once("../controllers/ListadoUsuariosController.php");?>
     <?php include("../includes/nav.php");?>
 
     <?php 
-    require_once("../controllers/ListadoUsuariosController.php");
-    echo "
+    
+    echo "<section class='contenedortabla'><div class=''>
     <input class='form-control' id='myInput' type='search' placeholder='Buscar..'>
     <form action='http://localhost/proyecto/views/usuariosView.php' method='post'>
     <TABLE class='table'>
         <tr>
-            <th>ID</th>
+            <th>correo</th>
             <th>Tipo</th>
             <th>Contraseña</th>
-            <th>PIN</th>
+            <th>Pin</th>
+            <th>estadoRecuperar</th>
             <th></th>
             <th></th>
-            
-            <th class='text-end'> <a class='btn btn-dark btn-info' role='button' href='../views/agregarProducto.php'>Agregar</a> </th>
+            <th class='text-end'> <a class='btn btn-dark btn-info' role='button' href='../views/altaUsuario.php'>Agregar</a> </th>
             
         
         </tr>
@@ -36,12 +37,20 @@ if ($_SESSION['user'] == ''){
         foreach($matrizUsuarios as $usuarios){
         
             echo "<tr>";
-            echo "<td>". $usuarios['id']. "</td>";
+            echo "<td>". $usuarios['email']. "</td>";
             echo "<td>". $usuarios['tipo']. "</td>";
             echo "<td>". $usuarios['pass']. "</td>";
             echo "<td>". $usuarios['pin']. "</td>";
-            //echo "<td>". $usuarios['tipo']. "</td>";
-            //echo "<td>". $usuarios['precio']. "</td>";
+            echo "<td>";
+           if($usuarios['estadoRecuperar']==1){ 
+               echo"<p class='solicitaCambio'>Solicita cambio de contraseña</p>";
+            }
+            elseif($usuarios['estadoRecuperar']==0){ 
+                echo"<p class='todoOK'>usuario OK</p>";
+             }
+            echo "</td>";
+            echo"<td></td>";
+    
 
             echo "<td> <button type='button' data-toggle='modal' data-target='#usuarioEdit". $usuarios['id']."' class='btn btn-secondary' name='editarB' id='editarB' value=". $usuarios['id'].  "> Editar </button> </td>";
             echo "<td> <button type='submit' class='btn btn-danger' name='eliminarB' id='eliminarB' value=". $usuarios['id']. "> Eliminar </button> </td>";
@@ -56,39 +65,39 @@ if ($_SESSION['user'] == ''){
                     </button>
                     </div>
                     <div class='modal-body'>
-                    
-                    
-                                <div class='modal-body mx-3'>
-                                <div class='form-group'>
-                                        <label>Cargo</label>
-                                        <select class='form-control' id='cargoRegistro' name='cargoRegistro' onchange='habilitarPWD(this) || habilitarPIN(this)'>
-                                        <option>Elija su cargo</option>
-                                        <option>Mozo</option>
-                                        <option>Caja</option>
-                                        <option>Cocina</option>
-                                        <option>Gerente</option>
-                                        <option>Administrador</option>                 
-                                        </select>
-                                        
-                                    
-                                    
-                                    </div>
-                                    <br>
-
-                                    <div class='form-outline mb-4  d-none' id='pinDivModal'>
-                                        <label>PIN</label>
-                                        <input type='password' class='form-control'  id='pinEdit' name='pinEdit' placeholder='Ingrese PIN' >
-                                    </div>
-
-                                    <div class='form-outline mb-4  d-none' id='pwdDivModal'>
-                                        <label>Contraseña:</label>
-                                        <input type='password' class='form-control' id='pwdEdit' name='pwdEdit' placeholder='Ingrese contraseña'>              
-                                    </div>        
-
-                                </div>
-                                <div class='modal-footer d-flex justify-content-center'>
-                                    <button type='submit' id='editBConfirmar' name='editBConfirmar' value=". $usuarios['id']." class='btn btn-deep-orange'>Confirmar</button>
-                                </div>
+                   
+                    <form class='form-inline' action='' method='post'>
+                    <div class='form-group'>
+                    <label for='text'>Email</label>
+                    <input type='text' class='form-control' id='email' name='email' value='". $usuarios['email']." required'>
+                    </div>
+                    <div class='form-group'>
+                    <label>Cargo</label>
+                    <select class='form-control' id='cargoRegistro' name='cargoRegistro' onchange='habilitar(this)'>
+                        <option disabled selected value >". $usuarios['tipo']."</option>
+                        <option>Administrador</option>
+                        <option>Gerente</option>
+                         <option>Mozo</option> 
+                        <option>Cocina</option>
+                        <option>Caja</option>                  
+                        
+                        </select> 
+                        <br>          
+                </div>
+                <div class='form-outline mb-4 d-none' id='pinDiv'>
+                <label>PIN</label>
+                <input type='password' class='form-control'  id='pin' name='pinEdit' placeholder='Ingrese PIN' >
+                </div>
+                <div class='form-outline mb-4 d-none' id='pwdDiv'>
+                    <label for='text'>pass:</label>
+                    <input type='password' class='form-control' id='pwdEdit' name='pwdEdit'>
+                    </div>
+                    <div class='modal-footer'>
+                    <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
+                    <button href='' type='submit' class='btn btn-primary' name = 'editBConfirmar' value=". $usuarios['id'].">Confirmar</button>
+                    </div>
+                    </form>
+                    ";?> <?php echo"
                 </div>
                 </div>
             
@@ -96,7 +105,7 @@ if ($_SESSION['user'] == ''){
           //
             echo "</tr>";
             echo "</form>";
-        }  
+        } 
         }else {
             echo "<td></td>";
             echo "<td></td>";
@@ -118,29 +127,24 @@ if ($_SESSION['user'] == ''){
        // echo $_POST['editarB'];
        // echo $_POST['eliminarB'];
     ?>
-
-        <script>
-            function habilitarPIN(answer){
+</div>
+</section>
+<script>
+            function habilitar(answer){
                 console.log(answer.value);
                 if (answer.value=='Mozo'||answer.value=='Caja'||answer.value=='Cocina'){
+                    document.getElementById('pwdDiv').classList.add('d-none');
+                    document.getElementById('pinDiv').classList.remove('d-none');
                     document.getElementById('pinDivModal').classList.remove('d-none');
-                }else{
                     
-                    document.getElementById('pinDivModal').classList.add('d-none');
-                }
-                               
-            };
-            function habilitarPWD(answer){
-                console.log(answer.value);
+                }   
                 if (answer.value=='Gerente'||answer.value=='Administrador'){
-                   
-                    document.getElementById('pwdDivModal').classList.remove('d-none');
-                }else{
-                  
-                    document.getElementById('pwdDivModal').classList.add('d-none');
+                    document.getElementById('pinDiv').classList.add('d-none');
+                    document.getElementById('pwdDiv').classList.remove('d-none');
+                    document.getElementById('pwdDivModal').classList.remove('d-none');   
                 }
+         
             };
-
 
         $(document).ready(function(){
         $("#myInput").on("keyup", function() {
@@ -150,8 +154,6 @@ if ($_SESSION['user'] == ''){
             });
         });
         });
+    </script>          
 
-    $(document).ready(function(){
-      $("#myInput").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $("#myTable tr").filter(function() {
+    <?php include("../includes/footer.php"); ?>

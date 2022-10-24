@@ -18,7 +18,12 @@ if ($_SESSION['user'] == ''){
     <?php // require_once("controllers/ListadoProductoController.php"); ?>
    
 
-    <section>
-        <h1>Bienvenido <?php   echo  $_SESSION['user']; ?></h1> 
+    <section class=textoenmedio>
+        <h1 >Bienvenido <?php   echo  $_SESSION['user']; ?></h1> 
+        <?php
+date_default_timezone_set("America/Montevideo");
+$DateAndTime = date('m-d-Y h:i:s a', time());  
+echo "<p>Hoy es $DateAndTime.<p>";
+?>
     </section>
     <?php include("includes/footer.php"); ?>

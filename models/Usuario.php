@@ -17,15 +17,15 @@ class Usuario{
         
         
         while($filas = mysqli_fetch_array($query)){
-            $this->productos[] = $filas;
+            $this->usuarios[] = $filas;
         }
-        return $this->productos;
+        return $this->usuarios;
     }
 
-    public function validarUsuario($user, $pass, $pin){
-        $sql = ('SELECT * FROM usuarios WHERE tipo = "'. $user .'"  AND pass ="'. $pass .'" OR pin ="'. $pin .'"');
+    public function validarUsuario($user, $pass, $pin, $correo){
+        $sql = ('SELECT * FROM usuarios WHERE tipo = "'. $user .'"  AND (pass ="'. $pass .'" AND email="'. $correo .'")  OR (pin ="'. $pin .'");');
         $query= mysqli_query($this->conn, $sql);
-    
+       
         if(mysqli_fetch_array($query)){
             
             return true;
@@ -42,29 +42,26 @@ class Usuario{
         foreach ($query as $currentUser) {
             $this->tipo = $currentUser['tipo'];
         }
-
-          
-
-
     }
 
     public function getNombre(){
         return $this->tipo;
     }
 
-    public function agregarUsuario($tipo, $pwd, $pin){
+    public function agregarUsuario($tipo, $pwd, $pin, $correo){
 
-        $consulta = "INSERT INTO usuarios(tipo,pass,pin) VALUES('$tipo',$pwd,$pin);";
+        $consulta = "INSERT INTO usuarios(email,tipo,pass,pin) VALUES('$correo','$tipo','$pwd',$pin);";
         echo $consulta;
         $query = mysqli_query($this->conn, $consulta);
         
     }
 
     public function recuperarUsuario($email){
-
-        $consulta = "SELECT * FROM `usuarios` WHERE email = '$email'";
+        $consulta = "UPDATE usuarios
+        SET estadoRecuperar = 1
+        WHERE email = '$email';";
+     
         $query = mysqli_query($this->conn, $consulta);
-        
     }
 
     public function eliminarUsuario($usuario){
@@ -73,13 +70,15 @@ class Usuario{
         $query = mysqli_query($this->conn, $consulta);
     }
 
-    public function editarUsuario($tipo, $pass, $pin, $usuario){
+    public function editarUsuario($email,$tipo, $pass, $pin, $usuario){
 
         $consulta = "UPDATE usuarios
-        SET tipo = '$tipo', pass = '$pass', pin = $pin
+        SET email = '$email', tipo = '$tipo', pass = '$pass', pin = $pin , estadoRecuperar = 0
         WHERE id = $usuario;";
+        echo $consulta;
         $query = mysqli_query($this->conn, $consulta);
     }
+    
 
 }
 

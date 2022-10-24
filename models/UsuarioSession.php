@@ -10,7 +10,7 @@ class UsuarioSession{
 
     public function redirect(){
 
-        header("Location:index.php");
+        header("Location:http://localhost/proyecto/index.php");
 
     }
 
