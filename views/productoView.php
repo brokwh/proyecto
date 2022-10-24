@@ -14,9 +14,9 @@ if ($_SESSION['user'] == ''){
 
     <?php 
     require_once("../controllers/ListadoProductoController.php");
-    echo "
+    echo "<section class='contenedortabla'><div class=''>
     <input class='form-control' id='myInput' type='search' placeholder='Buscar..'>
-    <form action='http://localhost/proyecto-main/views/productoView.php' method='post'>
+    <form action='http://localhost/proyecto/views/productoView.php' method='post'>
     <TABLE class='table'>
         <tr>
             <th>ID</th>
@@ -77,6 +77,7 @@ if ($_SESSION['user'] == ''){
                     </form>
                 </div>
                 </div>
+                
             
             </div>";
           //
@@ -105,8 +106,10 @@ if ($_SESSION['user'] == ''){
        // echo $_POST['eliminarB'];
     ?>
 
+</div>
+</section>
     <script>
-    $(document).ready(function(){
+    $(document).ready(function(){// script buscador
       $("#myInput").on("keyup", function() {
         var value = $(this).val().toLowerCase();
         $("#myTable tr").filter(function() {

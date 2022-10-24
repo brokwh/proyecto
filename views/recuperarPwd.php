@@ -1,22 +1,15 @@
-<?php 
-require_once("../controllers/recuperarPwd.php");
-include_once ('../models/UsuarioSession.php');
-$sesion = new UsuarioSession;
-if ($_SESSION['user'] == ''){   
-    header("Location:../index.php");
-}
-?> 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
  
     <title>Recuperar contraseña</title>
     <?php include("../includes/header.php");?>
-    
+   
     <?php include("../includes/navRecuperarPwd.php");?>
-    
+     <?php require_once("../controllers/recuperarPwd.php"); ?>
     <br>
-        <div class="container justify-content-center h-100 text-center">
+        <div class="contenedor1 container justify-content-center h-100 text-center">
             <h2>Recuperar contraseña</h2>
         
         <div class="container justify-content-center h-100">
@@ -25,7 +18,7 @@ if ($_SESSION['user'] == ''){
 
                 <div class="form-outline mb-4">
                     <label>email</label>
-                    <input type="email" class="form-control"  id="mailRecuperar" name="mailRecuperar" placeholder="Ingrese su email" >
+                    <input type="email" class="form-control"  id="mailRecuperar" name="mailRecuperar" placeholder="Ingrese su email" require>
                 </div>
                     <br>                 
                 <div class="checkbox">                       

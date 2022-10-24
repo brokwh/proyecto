@@ -1,33 +1,35 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<title>Ingreso</title>
-<?php include("includes/header.php");?>
-<?php require_once("../proyecto/controllers/agregarUsuario.php"); ?>
+
 <style>
-</style>
-</head>
-<body>
-<style>
- 
 .contenedor{
     opacity:90%;
-margin-left: 20%;
-margin-right:20% ;
+    margin-left: 20%;
+    margin-right:20% ;
 }
-footer{
-    width: 100%;
-    height: 81px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
 
-    }
+.d-none{
+    display: none;
+}
 
-    .d-none{
-        display: none;
-    }
-</style>
+body {
+    background: url('includes/imagenes/pescaderias-marisquerias-bogota.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+}
+    </style> 
+    <title>Ingreso</title>
+
+<?php require_once("../proyecto/controllers/agregarUsuario.php"); ?>
+
+</head>
+<body>
 </head>
 <?php include("includes/navLogin.php");?>
 
@@ -41,7 +43,7 @@ footer{
    
                 <div class="form-group">
                         <label>Cargo</label>
-                        <select class="form-control" id="cargo" name="cargo" onchange="habilitarPWD(this) || habilitarPIN(this)">
+                        <select class="form-control" id="cargo" name="cargo" onchange="habilitarPWD(this) || habilitarPIN(this) || habilitarEmail(this)">
                         <option>Elija su cargo</option>
                         <option>Mozo</option>
                         <option>Caja</option>
@@ -53,22 +55,28 @@ footer{
                     
                      
                     </div>
+                    <br>
+
+                    <div class="form-outline mb-4  d-none" id="emailDiv">
+                        <label>Correo</label>
+                        <input type="email" class="form-control"  id="email" name="email" placeholder="Ingrese correo" >
+                    </div>
+
                     <div class="form-outline mb-4  d-none" id="pinDiv">
                         <label>PIN</label>
-                        <input type="password" class="form-control"  id="pin" name="pin" placeholder="Ingrese PIN" required>
+                        <input type="password" class="form-control"  id="pin" name="pin" placeholder="Ingrese PIN" novalidate>
                     </div>
                     
                     <div class="form-outline mb-4  d-none" id="pwdDiv">
                         <label>Contraseña:</label>
-                        <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Ingrese contraseña" required>              
-
-                    </div>   
+                        <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Ingrese contraseña" novalidate>              
+                    </div> 
                                  
                     <div class="text-start">
-                    <a href="http://localhost/proyecto-main/views/recuperarPwd.php"><small>Recuperar contraseña</small></a>
+                    <a href="http://localhost/proyecto/views/recuperarPwd.php"><small>Recuperar contraseña</small></a>
                     </div>
                     <br>
-                    <div class="form-check">
+                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" onclick="Toggle()"></input>
                     <label class="form-check-label" for="flexCheckDefault">
                         Mostrar contraseña
@@ -97,7 +105,7 @@ footer{
                                 <div class="modal-body mx-3">
                                 <div class="form-group">
                                         <label>Cargo</label>
-                                        <select class="form-control" id="cargoRegistro" name="cargoRegistro" onchange="habilitarPWD(this) || habilitarPIN(this)">
+                                        <select class="form-control" id="cargoRegistro" name="cargoRegistro" onchange="habilitarPWD(this) || habilitarPIN(this) || habilitarEmail(this)">
                                         <option>Elija su cargo</option>
                                         <option>Mozo</option>
                                         <option>Caja</option>
@@ -110,6 +118,11 @@ footer{
                                     
                                     </div>
                                     <br>
+
+                                    <div class="form-outline mb-4  d-none" id="emailDivModal">
+                                        <label>Correo</label>
+                                        <input type="email" class="form-control"  id="emailRegistro" name="emailRegistro" placeholder="Ingrese correo" required>
+                                    </div>
 
                                     <div class="form-outline mb-4  d-none" id="pinDivModal">
                                         <label>PIN</label>
@@ -129,12 +142,8 @@ footer{
                     </div>
                 </div>
         </div>
+<script>
 
-           
-
-          
-
-        <script>
             function habilitarPIN(answer){
                 console.log(answer.value);
                 if (answer.value=='Mozo'||answer.value=='Caja'||answer.value=='Cocina'){
@@ -157,8 +166,20 @@ footer{
                 }
             };
 
-            function Toggle() {
-                var temp = document.getElementById("pin");
+            function habilitarEmail(answer){
+                console.log(answer.value);
+                if (answer.value=='Administrador'||answer.value=='Gerente'){
+                    document.getElementById('emailDiv').classList.remove('d-none');
+                    document.getElementById('emailDivModal').classList.remove('d-none');
+                }else{
+                    document.getElementById('emailDiv').classList.add('d-none');
+                    document.getElementById('emailDivModal').classList.add('d-none');
+                }
+                               
+            };
+
+        function Toggle() {
+            
                 var tempp = document.getElementById("pwd");
                     if (temp.type === "password") {
                         temp.type = "text";
@@ -177,7 +198,6 @@ footer{
                 
             
         </script>
-
         </body>
 <!-- final body -->
 <?php include("includes/footer.php"); ?>
