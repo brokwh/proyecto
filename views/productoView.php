@@ -4,26 +4,34 @@ $sesion = new UsuarioSession;
 if ($_SESSION['user'] == ''){   
     header("Location:../index.php");
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <title>Productos</title>
-<?php  require_once("../controllers/ListadoProductoController.php"); 
-include("../includes/header.php");?>
+
     <?php include("../includes/nav.php");?>
 
     <?php 
-    require_once("../controllers/ListadoProductoController.php");
+    ob_start();
+  require_once("../controllers/ListadoProductoController.php");
+  require_once("../controllers/ListadoCategoriaController.php");
+  include("../includes/header.php");
     echo "<section class='contenedortabla'><div class=''>
     <input class='form-control' id='myInput' type='search' placeholder='Buscar..'>
     <form action='http://localhost/proyecto/views/productoView.php' method='post'>
     <TABLE class='table'>
         <tr>
+            <th>Imagen</th>
             <th>ID</th>
             <th>Nombre</th>
             <th>Tipo</th>
             <th>Precio</th>
+            <th>Celiaco</th>
+            <th>Vegano</th>
+            <th>Vegetariano</th>
+            <th>Destacado</th>
             <th></th>
             <th class='text-end'> <a class='btn btn-dark btn-info' role='button' href='../views/agregarProducto.php'>Agregar</a> </th>
             
@@ -35,10 +43,16 @@ include("../includes/header.php");?>
         foreach($matrizProductos as $productos){
         
             echo "<tr>";
+            
+            echo "<td><img src = 'data:image/jpg;base64," . base64_encode($productos['imagen']) . "' width = '50px' height = '50px'/></td>";
             echo "<td>". $productos['id']. "</td>";
             echo "<td>". $productos['nombre']. "</td>";
             echo "<td>". $productos['tipo']. "</td>";
-            echo "<td>". $productos['precio']. "$</td>";
+            echo "<td>". $productos['precio']. "</td>";
+            echo "<td>". $productos['celiaco']. "</td>";
+            echo "<td>". $productos['vegano']. "</td>";
+            echo "<td>". $productos['vegetariano']. "</td>";
+            echo "<td>". $productos['destacado']. "</td>";
 
             echo "<td> <button type='button' data-toggle='modal' data-target='#productoEdit". $productos['id']."' class='btn btn-secondary' name='editarB' id='editarB' value=". $productos['id'].  "> Editar </button> </td>";
             echo "<td> <button type='submit' class='btn btn-danger' name='eliminarB' id='eliminarB' value=". $productos['id']. "> Eliminar </button> </td>";
@@ -57,20 +71,39 @@ include("../includes/header.php");?>
                     <form class='form-inline' action='' method='post'>
                     <div class='form-group'>
                     <label for='text'>Nombre:</label>
-                    <input type='text' class='form-control' id='nombreEditProducto' name='nombreEditProducto'  value='". $productos['nombre']."'>
+                    <input type='text' class='form-control' id='nombreEditProducto' name='nombreEditProducto' value='". $productos['nombre']."'>
                     </div>
                     <div class='form-group'>
                     <label>Tipo</label>
                     <select class='form-control' id='tipoEditProducto' name='tipoEditProducto'>
-                    <option disabled selected value >". $productos['tipo']."</option>
-                    <option>Bebida</option>
-                    <option>Plato</option>
-                    <option>Postre</option>                
+                    <option disabled>". $productos['tipo']."</option>";
+                    foreach ($matrizCategoria as $categoria) {
+                        echo "<option>". $categoria['nombre']. "</option>";
+                           }    
+                    echo "             
                     </select>            
                 </div>
                 <div class='form-group'>
                     <label for='text'>Precio:</label>
-                    <input type='text' class='form-control' id='precioEditProducto' name='precioEditProducto' value='". $productos['precio']."'>
+                    <input type='text' class='form-control' id='precioEditProducto' name='precioEditProducto'  value='". $productos['precio']."'SS>
+                    </div>
+                    <div class='form-outline mb-4'>
+                    <p>Aptitud</p>
+                    <div class='form-check form-check-inline'>
+                        <input class='form-check-input' type='checkbox' name='veganoB' id='veganoB' value='Vegano'>
+                        <label class='form-check-label' for='inlineCheckbox1'>Vegano</label>
+                    </div>
+                    <div class='form-check form-check-inline'>
+                        <input class='form-check-input' type='checkbox' name='vegetarianoB' id='vegetarianoB' value='Vegetariano'>
+                        <label class='form-check-label' for='inlineCheckbox2'>Vegetariano</label>
+                    </div>
+                    <div class='form-check form-check-inline'>
+                        <input class='form-check-input' type='checkbox' name='celiacoB' id='celiacoB' value='Celiaco'>
+                        <label class='form-check-label' for='inlineCheckbox3'>Celiaco</label>
+                    </div>
+                    <div class='form-check form-check-inline'>
+                        <input class='form-check-input' type='checkbox' name='destacadoB' id='destacadoB' value='Destacado'>
+                        <label class='form-check-label' for='inlineCheckbox3'>Destacado</label>
                     </div>
                     <div class='modal-footer'>
                     <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
@@ -119,6 +152,12 @@ include("../includes/header.php");?>
         });
       });
     });
+
+    $(document).ready(function() {        
+        setTimeout(function() {
+          $("#alerts").hide(6000);
+          }, 3000);
+        });
     </script>
 
 <?php include("../includes/footer.php"); ?>

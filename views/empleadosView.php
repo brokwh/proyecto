@@ -62,8 +62,8 @@ include("../includes/header.php");
         </tr>
         <tbody id='myTable'>"
         ;
-        if($matrizUsuarios == true){
-        foreach($matrizUsuarios as $usuarios){
+        if($matrizUsuariosEmpleados == true){
+        foreach($matrizUsuariosEmpleados as $usuarios){
         
             echo "<tr>";
             echo "<td>". $usuarios['email']. "</td>";

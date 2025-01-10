@@ -29,7 +29,7 @@ if ($_SESSION['user'] == ''){
 
                     <div class="form-group">
                         <label>tipo</label>
-                        <select class="form-control" id="cargoRegistro" name="cargoRegistro" onchange="habilitarPIN(this)">
+                      <?php if ($_SESSION['user'] == 'Administrador'){ ?><select class="form-control" id="cargoRegistro" name="cargoRegistro" onchange="habilitarPIN(this)">
                         <option disabled selected value>Elija su cargo</option>
                         <option>Administrador</option>
                         <option>Gerente</option>
@@ -37,7 +37,15 @@ if ($_SESSION['user'] == ''){
                         <option>Cocina</option>
                         <option>Caja</option>                  
                         
-                        </select>            
+                        
+                        <?php } else {?>   
+                            <select class="form-control" id="cargoRegistro" name="cargoRegistro" onchange="habilitarPIN(this)">
+                        <option disabled selected value>Elija su cargo</option>
+                         <option>Mozo</option> 
+                        <option>Cocina</option>
+                        <option>Caja</option> 
+                    </select> 
+                            <?php } ?>          
                     </div>
                     <br>
                 <div class="form-outline mb-4  d-none" id="pinDiv">

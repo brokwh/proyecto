@@ -1,7 +1,4 @@
-<?php 
-include_once ('models/UsuarioSession.php');
-include_once ('../models/UsuarioSession.php');
-?>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
            <div class="container-fluid">
     <a class="navbar-brand" href="http://localhost/proyecto/home.php"><img class="imagennav" src="http://localhost/proyecto/includes\imagenes\logonav.png"/></a>
@@ -20,17 +17,38 @@ if ($_SESSION['user'] == 'Administrador'){  ?>
           <a class="nav-link"  href="http://localhost/proyecto/views/productoView.php">Productos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="http://localhost/proyecto/views/usuariosView.php">Usuarios</a>
+          <a class="nav-link" href="http://localhost/proyecto/views/categoriaView.php">Categorias</a>
         </li>
-       <li class="nav-item">
-          <a class="nav-link" href="http://localhost/proyecto/views/comandasView.php">Comandas</a>
-        </li>
+        
         <li class="nav-item">
           <a class="nav-link" href="http://localhost/proyecto/views/mesasView.php">Mesas</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="http://localhost/proyecto/views/usuariosView.php">Usuarios</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost/proyecto/views/empleadosView.php">Empleados</a>
+        </li>
+       <li class="nav-item">
+          <a class="nav-link" href="http://localhost/proyecto/views/comandasView.php">Comanda</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost/proyecto/views/cocinaView.php">Cocina</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="http://localhost/proyecto/views/ordenView.php">Orden</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost/proyecto/views/metodoPagoView.php">Metodo Pago</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost/proyecto/views/reservaView.php">Reserva</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost/proyecto/views/comandas/verComandasTotalesView.php">Ordenes Totales</a>
+        </li>
+        
+        
          <!--<li class="nav-item">
           <a class="nav-link" href="#">Modificar</a>
         </li>
@@ -40,18 +58,25 @@ if ($_SESSION['user'] == 'Administrador'){  ?>
 <?php }?>
 <?php 
 if ($_SESSION['user'] == 'Mozo'){  ?>
-
+        
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href=""></a>
         </li>
+        
         <li class="nav-item">
           <a class="nav-link"  href="http://localhost/proyecto/views/productoView.php">Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost/proyecto/views/menuView.php">Menus</a>
         </li>
        <li class="nav-item">
           <a class="nav-link" href="http://localhost/proyecto/views/comandasView.php">Comandas</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="http://localhost/proyecto/views/ordenView.php">Orden</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost/proyecto/views/comandas/verComandasTotalesView.php">Ordenes Totales</a>
         </li>
          <!--<li class="nav-item">
           <a class="nav-link" href="#">Modificar</a>
@@ -67,16 +92,31 @@ if ($_SESSION['user'] == 'Gerente'){  ?>
           <a class="nav-link active" aria-current="page" href=""></a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="http://localhost/proyecto/views/empleadosView.php">Empleados</a>
+          <li class="nav-item">
+         <li class="nav-item">
+          <a class="nav-link" href="http://localhost/proyecto/views/mesasView.php">Mesas</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link"  href="http://localhost/proyecto/views/productoView.php">Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost/proyecto/views/categoriaView.php">Categorias</a>
         </li>
        <li class="nav-item">
           <a class="nav-link" href="http://localhost/proyecto/views/comandasView.php">Comandas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="http://localhost/proyecto/views/mesasView.php">Mesas</a>
+          <a class="nav-link" href="http://localhost/proyecto/views/ordenView.php">Orden</a> 
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="http://localhost/proyecto/views/ordenView.php">Orden</a>
+          <a class="nav-link" href="http://localhost/proyecto/views/cocinaView.php">Cocina</a>
+        </li>
+          <a class="nav-link" href="http://localhost/proyecto/views/reservaView.php">Reserva</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost/proyecto/views/comandas/verComandasTotalesView.php">Ordenes Totales</a>
+        </li>
         </li>
          <!--<li class="nav-item">
           <a class="nav-link" href="#">Modificar</a>
@@ -86,19 +126,19 @@ if ($_SESSION['user'] == 'Gerente'){  ?>
         </li> -->
 <?php }?>
 <?php 
-if ($_SESSION['user'] == 'cocina'){  ?>
+if ($_SESSION['user'] == 'Cocina'){  ?>
 
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href=""></a>
         </li>
-       <li class="nav-item">
-          <a class="nav-link" href="http://localhost/proyecto/views/comandasView.php">Comandas</a>
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost/proyecto/views/cocinaView.php">Cocina</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="http://localhost/proyecto/views/mesasView.php">Mesas</a>
+          <a class="nav-link" href="http://localhost/proyecto/views/menuView.php">Menus</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="http://localhost/proyecto/views/ordenView.php">Orden</a>
+          <a class="nav-link"  href="http://localhost/proyecto/views/productoView.php">Productos</a>
         </li>
          <!--<li class="nav-item">
           <a class="nav-link" href="#">Modificar</a>
@@ -107,6 +147,26 @@ if ($_SESSION['user'] == 'cocina'){  ?>
           <a class="nav-link" href="#">Borrar todo</a>
         </li> -->
 <?php }?>
+<?php 
+if ($_SESSION['user'] == 'Caja'){  ?>
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href=""></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost/proyecto/views/ordenView.php">Orden</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  href="http://localhost/proyecto/views/productoView.php">Productos</a>
+        </li>
+         <!--<li class="nav-item">
+          <a class="nav-link" href="#">Modificar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Borrar todo</a>
+        </li> -->
+<?php }?>
+
 
         
       </ul>

@@ -5,8 +5,8 @@
 <style>
 .contenedor{
     opacity:90%;
-    margin-left: 20%;
-    margin-right:20% ;
+    margin-left: 10%;
+    margin-right:10% ;
 }
 
 .d-none{
@@ -30,16 +30,22 @@ body {
 
 </head>
 <body>
+
 </head>
 <?php include("includes/navLogin.php");?>
-
+<?php if(isset($_GET['ok']) && $_GET['ok'] == 1){ ?>
+        <div id='alerts' class="alert alert-success alert-dismissible fade show my-3 mx-2" role="alert">
+        Se ha recuperado <strong>usuario.</strong>
+        <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span></button>
+      </div><?php } ?>
         <br>
         <div class=contenedor>
  
-            <div class="container-fluid p-3 my-3 bg-dark text-white">
+            <div class="container-fluid p-3 bg-dark text-white">
          <h3>LOGIN</h3>
          
-         <form action =""  method="post" class = "form-signin">
+         <form action =""  method="post" class = "form-signin" novalidate>
    
                 <div class="form-group">
                         <label>Cargo</label>
@@ -49,10 +55,7 @@ body {
                         <option>Caja</option>
                         <option>Cocina</option>
                         <option>Gerente</option>
-                        <option>Mozo</option>
-                        <option>Caja</option>   
-                        <option>Cocina</option>
-                                      
+                        <option>Administrador</option>                 
                         
                     </select>
                     
@@ -69,15 +72,8 @@ body {
                         <label>PIN</label>
                         <input type="password" class="form-control"  id="pin" name="pin" placeholder="Ingrese PIN" novalidate>
                     </div>
-                    <br>
-
-                    <div class="form-outline mb-4" id="pinDivModal">
-                  <label>Correo</label>
-                   <input type="text" class="form-control"  id="correo" name="correo" placeholder="Ingrese correo" required>
-                   </div>
-
                     
-                    <div class="form-outline mb-4" id="pwdDiv">
+                    <div class="form-outline mb-4  d-none" id="pwdDiv">
                         <label>Contraseña:</label>
                         <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Ingrese contraseña" novalidate>              
                     </div> 
@@ -100,7 +96,7 @@ body {
             </div>
         </div>
    
-               <!-- MODAL
+                <!--MODAL-->
                 <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -111,7 +107,7 @@ body {
                         </button>
                 </div>
                     
-                        <form action="" method="post" class = "form-signin"novalidate>
+                        <form action="" method="post" class = "form-signin">
                                 <div class="modal-body mx-3">
                                 <div class="form-group">
                                         <label>Cargo</label>
@@ -139,20 +135,7 @@ body {
                                         <input type="password" class="form-control"  id="pinRegistro" name="pinRegistro" placeholder="Ingrese PIN" required>
                                     </div>
 
-                                    <div class="form-group">
-                        <label>tipo</label>
-                        <select class="form-control" id="cargoRegistro" name="cargoRegistro">
-                        <option disabled selected value>Elija su cargo</option>
-                        <option>Administrador</option>
-                        <option>Gerente</option>
-                        <option>Mozo</option>
-                        <option>Caja</option>   
-                        <option>Cocina</option>
-                                      
-                        
-                        </select>            
-                    </div>
-                                    <div class="form-outline mb-4">
+                                    <div class="form-outline mb-4  d-none" id="pwdDivModal">
                                         <label>Contraseña:</label>
                                         <input type="password" class="form-control" id="pwdRegistro" name="pwdRegistro" placeholder="Ingrese contraseña" required>              
                                     </div>        
@@ -163,7 +146,7 @@ body {
                                 </div>
                         </form>
                     </div>
-                </div>-->
+                </div>
         </div>
 <script>
 
@@ -217,7 +200,11 @@ body {
                             tempp.type = "password";
                     }
             } ; 
-                                   
+            $(document).ready(function() {        
+        setTimeout(function() {
+          $("#alerts").hide(6000);
+          }, 3000);
+        });                     
                 
             
         </script>
