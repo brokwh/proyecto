@@ -164,8 +164,21 @@ git clone https://github.com/brokwh/proyecto.git
 - **Mayor satisfacción del cliente:** Experiencia fluida y moderna gracias a menús digitales y gestión rápida de reservas.
 
 ## Capturas de pantalla 📸
-
-*(Incluye capturas de los menús digitales, el sistema de reservas o el panel de administración para ilustrar las funcionalidades.)*
+![1](https://diegopozzi.com/proyectoUtu/1.png)
+![1](https://diegopozzi.com/proyectoUtu/2.png)
+![1](https://diegopozzi.com/proyectoUtu/3.png)
+![1](https://diegopozzi.com/proyectoUtu/4.png)
+![1](https://diegopozzi.com/proyectoUtu/5.png)
+![1](https://diegopozzi.com/proyectoUtu/6.png)
+![1](https://diegopozzi.com/proyectoUtu/7.png)
+![1](https://diegopozzi.com/proyectoUtu/8.png)
+![1](https://diegopozzi.com/proyectoUtu/9.png)
+![1](https://diegopozzi.com/proyectoUtu/10.png)
+![1](https://diegopozzi.com/proyectoUtu/11.png)
+![1](https://diegopozzi.com/proyectoUtu/12.png)
+![1](https://diegopozzi.com/proyectoUtu/13.png)
+![1](https://diegopozzi.com/proyectoUtu/14.png)
+![1](https://diegopozzi.com/proyectoUtu/15.png)
 
 ## Equipo de desarrollo 👨‍💻👩‍💻
 
